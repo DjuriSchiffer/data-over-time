@@ -26,6 +26,6 @@
     "polished": "^4.2.2",
     "react-device-detect": "^2.2.3",
     "styled-components": "^6.0.0-rc.1",
-    "vite": "^4.3.2"
+    "vite": "^4.3.9"
   }
 }
