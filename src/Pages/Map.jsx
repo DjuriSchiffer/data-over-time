@@ -1,8 +1,24 @@
 import styled from "styled-components";
 import MapBox from "../Components/Map";
 import TimeLine from "../Components/Timeline";
+import TimelineSpeedSelector from "../Components/TimelineSpeedSelector";
+import GranularitySelector from "../Components/GranularitySelector";
 import { rem } from "polished";
 import { useState, useDispatch } from "../hooks/useReducer";
+import { calculateDateFromRatio } from "../utils/time";
+
+const TimeContainer = styled.div`
+  ${({ theme }) => `
+      position: absolute;
+      left: 0;
+      top:0;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      padding: ${rem(24)};
+      color: black;
+    `}
+`;
 
 const TimelineButtonPanel = styled.aside`
   ${({ theme }) => `
@@ -22,7 +38,9 @@ const TimelineButtonPanel = styled.aside`
 `;
 
 function Map() {
-  const { playing } = useState();
+  const { playing, time, timelineSettings } = useState();
+  const { year, monthNumber, month, week, dayNumber, dayOfWeek, timestamp } =
+    calculateDateFromRatio(timelineSettings, time);
   const dispatch = useDispatch();
 
   const handlePlayPause = () => {
@@ -35,7 +53,19 @@ function Map() {
 
   return (
     <>
-      <MapBox />
+      {/* <MapBox /> */}
+      <TimeContainer>
+        <div>Absolute Time: {time} </div>
+        <div>dayNumber: {dayNumber}</div>
+        <div>dayOfWeek: {dayOfWeek}</div>
+        <div>Week number: {week}</div>
+        <div>monthNumber: {monthNumber}</div>
+        <div>month: {month}</div>
+        <div>Year: {year}</div>
+        <div>Cureent timestamp: {timestamp}</div>
+      </TimeContainer>
+      <GranularitySelector />
+      <TimelineSpeedSelector />
       <TimelineButtonPanel>
         <button
           onClick={handlePlayPause}

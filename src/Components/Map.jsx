@@ -1,9 +1,10 @@
 import { useRef, useState, useEffect } from "react";
-import { useState as useGlobalState, useDispatch } from "../hooks/useReducer";
+import { useState as useGlobalState } from "../hooks/useReducer";
 import styled from "styled-components";
 import mapboxgl from "mapbox-gl";
-import data from "../assets/mapdata";
-import fake from "../assets/fakedata";
+// import data from "../assets/mapdata_latest";
+// import fake from "../assets/fakedata";
+// import records from "../assets/Records.json";
 
 mapboxgl.accessToken = import.meta.env.VITE_MAP_BOX_API;
 
@@ -57,13 +58,13 @@ const buildMapData = (data) => {
 };
 
 const Map = () => {
-  const { time } = useGlobalState();
+  const { time, mapData } = useGlobalState();
   const [loaded, setLoaded] = useState(false);
   const mapContainer = useRef(null);
   const map = useRef(null);
-  const [lng, setLng] = useState(-84.27002);
-  const [lat, setLat] = useState(37.839333);
-  const [zoom, setZoom] = useState(4);
+  const [lng, setLng] = useState(mapData[0].geometry.coordinates[0]);
+  const [lat, setLat] = useState(mapData[0].geometry.coordinates[1]);
+  const [zoom, setZoom] = useState(8);
 
   useEffect(() => {
     if (map.current) return; // initialize map only once
@@ -94,6 +95,13 @@ const Map = () => {
         },
       });
 
+      console.log(mapData);
+
+      // console.log(records.locations);
+      // const mapDataNew = buildMapDataNew(records.locations);
+      // console.log(mapDataNew);
+      // console.log(map)
+
       // console.log("fake", fake.features[0].geometry.coordinates);
       // const mapData = buildMapData(fake.features[0].geometry.coordinates);
       // console.log(mapData);
@@ -103,8 +111,13 @@ const Map = () => {
   }, []);
 
   useEffect(() => {
+    console.log(time);
     if (loaded) {
-      map.current.getSource("points").setData(data[time]);
+      if (time in mapData) {
+        console.log(time, mapData[time]);
+
+        map.current.getSource("points").setData(mapData[time]);
+      }
     }
   }, [time, loaded, map.current]);
 

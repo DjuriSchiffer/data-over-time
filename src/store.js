@@ -1,7 +1,20 @@
+import records from "./assets/Records.json";
+import { prepareMapData } from "./utils/prepareData";
+import { calculateRatioFromGranularity, getTotalDays } from "./utils/time";
+
+const timelineSettings = {
+  start: new Date("1900-01-01T00:00:00Z").getTime(),
+  end: new Date("2000-01-01T00:00:00Z").getTime(),
+  increment: 5,
+};
+
 export const initialStore = {
   time: 0,
   playing: "pause", // enum: pause play resume
-  speed: 0.0005,
+  timelineSettings: timelineSettings,
+  timelineSpeed: "REAL_TIME",
+  granularity: "day",
+  mapData: prepareMapData(records.locations),
 };
 
 export const reducer = (state, action) => {
@@ -12,7 +25,23 @@ export const reducer = (state, action) => {
     case "UPDATE_TIME":
       return {
         ...state,
-        time: Math.round(action.payload * 40000) / 40000,
+        time:
+          Math.round(action.payload * getTotalDays(timelineSettings)) /
+          getTotalDays(timelineSettings),
+      };
+
+    case "UPDATE_TIMELINE_SPEED":
+      return {
+        ...state,
+        timelineSpeed: action.payload,
+      };
+    /*
+     * Update granularity
+     */
+    case "UPDATE_GRANULARITY":
+      return {
+        ...state,
+        granularity: action.payload,
       };
     /*
      * Update time player
@@ -28,21 +57,19 @@ export const reducer = (state, action) => {
         playing: "pause",
       };
     case "INTERVAL_TIME":
-      const futureTime = state.time + state.speed;
+      const futureTime =
+        state.time +
+        calculateRatioFromGranularity(state.granularity, timelineSettings);
       if (futureTime > 1) {
         return { ...state, time: 1, playing: "pause" };
       }
 
       return {
         ...state,
-        time: Math.round(futureTime * 40000) / 40000,
+        time:
+          Math.round(futureTime * getTotalDays(timelineSettings)) /
+          getTotalDays(timelineSettings),
       };
-    case "TOGGLE_SPEED_SLOW":
-      return { ...state, speed: calcSpeed(0.5) };
-    case "TOGGLE_SPEED_NORMAL":
-      return { ...state, speed: calcSpeed(1) };
-    case "TOGGLE_SPEED_FAST":
-      return { ...state, speed: calcSpeed(2) };
 
     /*
      * Initial error handling

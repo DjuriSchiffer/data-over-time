@@ -3,19 +3,7 @@ import { rem } from "polished";
 import { useState, useRef, useEffect } from "react";
 import { useState as useGlobalState, useDispatch } from "../hooks/useReducer";
 import { isMobile } from "react-device-detect";
-
-const timelineSettings = {
-  start: 1900,
-  end: 2023,
-  increment: 5,
-};
-
-export const fromRatio = (ratio) => {
-  return (
-    timelineSettings.start +
-    Math.floor(ratio * (timelineSettings.end - timelineSettings.start))
-  );
-};
+import { calculateDateFromRatio, getYearFromDateStr } from "../utils/time";
 
 const StyledTooltipLabel = styled.span`
   ${({ theme }) => `
@@ -152,14 +140,18 @@ const StyledLabelDot = styled.div`
 `;
 
 const Time = () => {
+  const { timelineSettings } = useGlobalState();
   const points = [];
-  for (let i = timelineSettings.start; i <= timelineSettings.end; i += 1) {
+  const startYear = getYearFromDateStr(timelineSettings.start);
+  const endYear = getYearFromDateStr(timelineSettings.end);
+
+  for (let i = startYear; i <= endYear; i += 1) {
     points.push(
       <StyledLabelDot
         key={i}
         $label={i % timelineSettings.increment === 0 ? i : null}
-        $first={i === timelineSettings.start}
-        $last={i === timelineSettings.end}
+        $first={i === startYear}
+        $last={i === endYear}
       ></StyledLabelDot>
     );
   }
@@ -167,10 +159,22 @@ const Time = () => {
 };
 
 const TimeLine = () => {
-  const { time, playing } = useGlobalState();
+  const { time, playing, timelineSettings, timelineSpeed } = useGlobalState();
   const dispatch = useDispatch();
   const [dragging, setDragging] = useState(false);
   const ref = useRef();
+  const { year } = calculateDateFromRatio(timelineSettings, time);
+
+  const calculateInterval = (timelineSpeed) => {
+    switch (timelineSpeed) {
+      case "REAL_TIME":
+        return 33; // 33 milliseconds for real-time
+      case "ONE_SECOND":
+        return 1000; // 1000 milliseconds (1 second) for one second per step
+      default:
+        return 33; // Default to 33 milliseconds
+    }
+  };
 
   useEffect(() => {
     function handleDrag(event) {
@@ -218,7 +222,7 @@ const TimeLine = () => {
     if (playing === "play") {
       playIntervalId = setInterval(() => {
         dispatch({ type: "INTERVAL_TIME" });
-      }, 33);
+      }, calculateInterval(timelineSpeed));
     } else {
       if (playIntervalId !== null) {
         clearInterval(playIntervalId);
@@ -230,7 +234,34 @@ const TimeLine = () => {
         clearInterval(playIntervalId);
       }
     };
-  }, [playing, dispatch]);
+  }, [playing, dispatch, timelineSpeed]);
+
+  // useEffect(() => {
+  //   let animationFrameId = null;
+
+  //   const animate = () => {
+  //     dispatch({ type: "INTERVAL_TIME" });
+  //     animationFrameId = requestAnimationFrame(animate);
+  //   };
+
+  //   if (playing === "play") {
+  //     // Apply will-change to hint at potential changes
+  //     // and use hardware acceleration with transform
+  //     // Adjust this based on your specific animation elements
+  //     // For example: element.style.willChange = 'transform';
+  //     animate();
+  //   } else {
+  //     if (animationFrameId !== null) {
+  //       cancelAnimationFrame(animationFrameId);
+  //     }
+  //   }
+
+  //   return () => {
+  //     if (animationFrameId !== null) {
+  //       cancelAnimationFrame(animationFrameId);
+  //     }
+  //   };
+  // }, [playing, dispatch]);
 
   const setTime = (value) => {
     dispatch({ type: "UPDATE_TIME", payload: value });
@@ -269,7 +300,7 @@ const TimeLine = () => {
             onTouchStart={handleTooltipDown}
             onTouchEnd={handleTooltipUp}
           >
-            {fromRatio(time)}
+            {year}
           </StyledTooltipLabel>
         </StyledTooltip>
       </StyledTooltipWrapper>
