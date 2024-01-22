@@ -3,29 +3,11 @@ import { rem } from "polished";
 const theme = {
   color: {
     key: {
-      dark: "#333333",
-      default: "#696969",
-      light: "#F2F2F2",
-      white: "#FFFFFF",
+      default: "#10b981",
+      highlight: "#fac815",
     },
     background: {
-      dark: "#4D6C7E",
-      default: "#CBC9AF",
-      light: "#EDECDA",
-      xLight: "#F4F4EF",
-    },
-
-    date: {
-      dark: "#BC4242",
-      default: "#C73528",
-      light: "#F49090",
-      xLight: "#FFF4F3",
-    },
-    location: {
-      dark: "#406539",
-      default: "#61BA3C",
-      light: "#A4F482",
-      xLight: "#D7E5BF",
+      dark: "#071827",
     },
   },
   fonts: {
@@ -38,7 +20,7 @@ const theme = {
       },
       large: {},
     },
-  
+
     largeTitle: {
       small: {
         fontFamily: "PT Serif",
@@ -187,14 +169,6 @@ const theme = {
     },
   },
   breakPoint: 900,
-  padding: {
-    outer: rem(24),
-    inner: rem(16),
-  },
-  transition: {
-    timing: ".3s",
-    function: "ease",
-  },
 };
 
 export default theme;

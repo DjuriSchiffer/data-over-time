@@ -1,11 +1,10 @@
 import records from "./assets/Records.json";
 import { prepareMapData } from "./utils/prepareData";
-import { calculateRatioFromGranularity, getTotalDays } from "./utils/time";
+import { calculateRatioFromGranularity } from "./utils/time";
 
 const timelineSettings = {
-  start: new Date("1900-01-01T00:00:00Z").getTime(),
-  end: new Date("2000-01-01T00:00:00Z").getTime(),
-  increment: 5,
+  start: new Date("2000-01-01T00:00:00Z").getTime(),
+  end: Date.now(),
 };
 
 export const initialStore = {
@@ -13,7 +12,7 @@ export const initialStore = {
   playing: "pause", // enum: pause play resume
   timelineSettings: timelineSettings,
   timelineSpeed: "REAL_TIME",
-  granularity: "day",
+  granularity: "week",
   mapData: prepareMapData(records.locations),
 };
 
@@ -25,9 +24,7 @@ export const reducer = (state, action) => {
     case "UPDATE_TIME":
       return {
         ...state,
-        time:
-          Math.round(action.payload * getTotalDays(timelineSettings)) /
-          getTotalDays(timelineSettings),
+        time: action.payload,
       };
 
     case "UPDATE_TIMELINE_SPEED":
@@ -57,18 +54,20 @@ export const reducer = (state, action) => {
         playing: "pause",
       };
     case "INTERVAL_TIME":
-      const futureTime =
-        state.time +
-        calculateRatioFromGranularity(state.granularity, timelineSettings);
+      const increment = calculateRatioFromGranularity(
+        state.granularity,
+        timelineSettings
+      );
+      const futureTime = state.time + increment;
+
+      // Ensure time doesn't exceed the end of the timeline
       if (futureTime > 1) {
         return { ...state, time: 1, playing: "pause" };
       }
 
       return {
         ...state,
-        time:
-          Math.round(futureTime * getTotalDays(timelineSettings)) /
-          getTotalDays(timelineSettings),
+        time: futureTime,
       };
 
     /*

@@ -1,5 +1,13 @@
-const MILLISECONDS_IN_DAY = 24 * 60 * 60 * 1000;
 const DAYS_IN_YEAR = 365;
+
+const MILLISECONDS_IN_SECOND = 1000;
+const SECONDS_IN_MINUTE = 60;
+const SECONDS_IN_HOUR = 3600; // 60 minutes * 60 seconds
+const SECONDS_IN_DAY = 86400; // 24 hours * 3600 seconds
+const SECONDS_IN_WEEK = SECONDS_IN_DAY * 7;
+const SECONDS_IN_MONTH = SECONDS_IN_DAY * (DAYS_IN_YEAR / 12); // Approximate month duration
+const SECONDS_IN_YEAR = SECONDS_IN_DAY * DAYS_IN_YEAR;
+const MILLISECONDS_IN_DAY = SECONDS_IN_DAY * MILLISECONDS_IN_SECOND;
 
 const MONTH_NAMES = [
   "January",
@@ -25,74 +33,68 @@ const DAY_NAMES = [
   "Saturday",
 ];
 
-function getWeekNumber(date) {
-  // Copy date so don't modify original
-  date = new Date(date);
+function getWeekNumber(inputDate) {
+  const date = new Date(inputDate);
   date.setHours(0, 0, 0, 0);
-  // Set to nearest Thursday: current date + 4 - current day number
-  // Make Sunday's day number 7
   date.setDate(date.getDate() + 4 - (date.getDay() || 7));
-  // Get first day of year
   const yearStart = new Date(date.getFullYear(), 0, 1);
-  // Calculate full weeks to nearest Thursday
-  const weekNumber = Math.ceil(
-    ((date - yearStart) / MILLISECONDS_IN_DAY + 1) / 7
-  );
-  return weekNumber;
+  return Math.ceil(((date - yearStart) / MILLISECONDS_IN_DAY + 1) / 7);
 }
 
-export const calculateYearFromRatio = (timelineSettings, ratio) =>
-  timelineSettings.start +
-  Math.floor(ratio * (timelineSettings.end - timelineSettings.start));
-
 export const calculateDateFromRatio = (timelineSettings, ratio) => {
-  const timestamp = calculateYearFromRatio(timelineSettings, ratio);
+  const timestamp =
+    timelineSettings.start +
+    Math.floor(ratio * (timelineSettings.end - timelineSettings.start));
   const date = new Date(timestamp);
-
-  const dayNumber = date.getDay();
-  const dayOfWeek = DAY_NAMES[dayNumber];
-
   return {
     year: date.getFullYear(),
     monthNumber: date.getMonth() + 1,
     month: MONTH_NAMES[date.getMonth()],
     week: getWeekNumber(date),
-    dayNumber,
-    dayOfWeek,
+    dayNumber: date.getDate(),
+    dayOfWeek: DAY_NAMES[date.getDay()],
+    hours: date.getHours(),
+    minutes: date.getMinutes(),
+    seconds: date.getSeconds(),
     timestamp,
   };
 };
 
-export const getYearFromDateStr = (dateStr) => new Date(dateStr).getFullYear();
-
 export const calculateOneDayRatio = (timelineSettings) =>
-  1 /
-  ((getYearFromDateStr(timelineSettings.end) -
-    getYearFromDateStr(timelineSettings.start)) *
-    DAYS_IN_YEAR +
-    1);
+  1 / getTotalDays(timelineSettings);
+
+export const getTotalDays = (timelineSettings) => {
+  return (timelineSettings.end - timelineSettings.start) / MILLISECONDS_IN_DAY;
+};
+
+export const calculateOneSecondRatio = (timelineSettings) => {
+  const totalDurationInSeconds =
+    (timelineSettings.end - timelineSettings.start) / MILLISECONDS_IN_SECOND;
+  return totalDurationInSeconds > 0 ? 1 / totalDurationInSeconds : 0;
+};
 
 export const calculateRatioFromGranularity = (
   granularity,
   timelineSettings
 ) => {
-  const oneDayRatio = calculateOneDayRatio(timelineSettings);
+  const oneSecondRatio = calculateOneSecondRatio(timelineSettings);
 
   switch (granularity) {
+    case "second":
+      return oneSecondRatio;
+    case "minute":
+      return oneSecondRatio * SECONDS_IN_MINUTE;
+    case "hour":
+      return oneSecondRatio * SECONDS_IN_HOUR;
     case "day":
-      return oneDayRatio;
+      return oneSecondRatio * SECONDS_IN_DAY;
     case "week":
-      return oneDayRatio * 7;
+      return oneSecondRatio * SECONDS_IN_WEEK;
     case "month":
-      return oneDayRatio * 30;
+      return oneSecondRatio * SECONDS_IN_MONTH;
     case "year":
-      return oneDayRatio * DAYS_IN_YEAR;
+      return oneSecondRatio * SECONDS_IN_YEAR;
     default:
       throw new Error("Invalid granularity");
   }
 };
-
-export const getTotalDays = (timelineSettings) =>
-  Math.floor(
-    (timelineSettings.end - timelineSettings.start) / MILLISECONDS_IN_DAY
-  );

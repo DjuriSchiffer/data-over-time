@@ -1,61 +1,51 @@
 import styled from "styled-components";
-import MapBox from "../Components/Map";
+import MapBox from "../Components/MapBox";
 import TimeLine from "../Components/Timeline";
-import TimelineSpeedSelector from "../Components/TimelineSpeedSelector";
-import GranularitySelector from "../Components/GranularitySelector";
+import TimeSeriesChart from "../Components/TimeSeriesChart";
+import { useState } from "../hooks/useReducer";
+import {
+  calculateDateFromRatio,
+  calculateRatioFromGranularity,
+} from "../utils/time";
 import { rem } from "polished";
-import { useState, useDispatch } from "../hooks/useReducer";
-import { calculateDateFromRatio } from "../utils/time";
 
-const TimeContainer = styled.div`
+const DebugPanel = styled.div`
   ${({ theme }) => `
-      position: absolute;
-      left: 0;
-      top:0;
-      z-index: 9999;
-      display: flex;
-      flex-direction: column;
-      padding: ${rem(24)};
-      color: black;
-    `}
-`;
-
-const TimelineButtonPanel = styled.aside`
-  ${({ theme }) => `
-      position: absolute;
-      bottom: ${rem(24)};
-      right:0;
-      z-index: 9999;
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-      padding: ${rem(24)} ${rem(24)} 0 0;
-      @media only screen and (min-width: ${theme.breakPoint}px) {
-        bottom: ${rem(80)};
-      }
-    `}
+     background-color: ${theme.color.background.dark};
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    height: 50vh;
+    width: 50vw;
+    color: white;
+    padding: ${rem(12)};
+   `}
 `;
 
 function Map() {
-  const { playing, time, timelineSettings } = useState();
-  const { year, monthNumber, month, week, dayNumber, dayOfWeek, timestamp } =
-    calculateDateFromRatio(timelineSettings, time);
-  const dispatch = useDispatch();
-
-  const handlePlayPause = () => {
-    if (playing === "play") {
-      dispatch({ type: "PAUSE_TIME" });
-    } else {
-      dispatch({ type: "PLAY_TIME" });
-    }
-  };
+  const { time, timelineSettings, granularity } = useState();
+  const {
+    year,
+    monthNumber,
+    month,
+    week,
+    dayNumber,
+    dayOfWeek,
+    hours,
+    minutes,
+    seconds,
+    timestamp,
+  } = calculateDateFromRatio(timelineSettings, time);
 
   return (
     <>
       {/* <MapBox /> */}
-      <TimeContainer>
+      <DebugPanel>
         <div>Absolute Time: {time} </div>
+        <div>seconds: {seconds} </div>
+        <div>minutes: {minutes} </div>
+        <div>hours: {hours} </div>
         <div>dayNumber: {dayNumber}</div>
         <div>dayOfWeek: {dayOfWeek}</div>
         <div>Week number: {week}</div>
@@ -63,17 +53,13 @@ function Map() {
         <div>month: {month}</div>
         <div>Year: {year}</div>
         <div>Cureent timestamp: {timestamp}</div>
-      </TimeContainer>
-      <GranularitySelector />
-      <TimelineSpeedSelector />
-      <TimelineButtonPanel>
-        <button
-          onClick={handlePlayPause}
-          id={playing === "play" ? "pause" : "play"}
-        >
-          {playing === "play" ? "pause" : "play"}
-        </button>
-      </TimelineButtonPanel>
+        <div>
+          Granularity:{" "}
+          {calculateRatioFromGranularity(granularity, timelineSettings)}
+        </div>
+      </DebugPanel>
+      <TimeSeriesChart />
+      <MapBox />
       <TimeLine />
     </>
   );

@@ -5,24 +5,22 @@ import { rem } from "polished";
 
 const StyledTimelineSpeedSelector = styled.div`
   ${({ theme }) => `
-      position: absolute;
-      bottom: ${rem(24)};
+     
       right: 80px;
       z-index: 9999;
       display: flex;
       flex-direction: row;
       justify-content: center;
       align-items: center;
-      padding: ${rem(24)} ${rem(24)} 0 0;
-      @media only screen and (min-width: ${theme.breakPoint}px) {
-        bottom: ${rem(80)};
-      }
+      color: white;
+      margin: 0 1.5rem;
     `}
 `;
 
 const RadioLabel = styled.label`
   display: flex;
   align-items: center;
+  margin-right: 0.5rem;
 `;
 
 const RadioInput = styled.input`

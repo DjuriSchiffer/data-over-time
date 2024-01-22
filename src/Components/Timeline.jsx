@@ -1,310 +1,211 @@
 import styled from "styled-components";
 import { rem } from "polished";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { useState as useGlobalState, useDispatch } from "../hooks/useReducer";
 import { isMobile } from "react-device-detect";
-import { calculateDateFromRatio, getYearFromDateStr } from "../utils/time";
+import TimelineSpeedSelector from "./TimelineSpeedSelector";
+import GranularitySelector from "./GranularitySelector";
 
-const StyledTooltipLabel = styled.span`
+const TimelineButtonPanel = styled.aside`
   ${({ theme }) => `
-    position: absolute;
-    left: ${rem(-40)};
-    width: ${rem(82)};
-    top: ${rem(-25)};
-    height: ${rem(35)};
-    background-color: ${theme.color.date.xLight};
-    border: ${rem(1)} solid ${theme.color.date.default};
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    color: ${theme.color.date.default};
-    cursor: pointer;
-    user-select: none;
-    &:after, &:before {
-      top: 100%;
-      left: 50%;
-      border: solid transparent;
-      content: "";
-      height: 0;
-      width: 0;
-      position: absolute;
-      pointer-events: none;
-    }
-    &:after {
-      border-color: rgba(136, 183, 213, 0);
-      border-top-color: ${theme.color.date.xLight};
-      border-width: 5px;
-      margin-left: -5px;
-    }
-    &:before {
-      border-color: rgba(194, 225, 245, 0);
-      border-top-color: ${theme.color.date.default};
-      border-width: 6px;
-      margin-left: -6px;
-    }
-  `}
-`;
-
-const StyledTooltipWrapper = styled.div`
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: ${rem(24)};
-  right: ${rem(24)};
+      z-index: 9999;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+    `}
 `;
 
 const StyledTooltip = styled.span`
   ${({ theme }) =>
     `
     position: absolute;
-    top: 0;
-    width: ${rem(2)};
-    height: ${rem(72)};
-    background-color: ${theme.color.date.default};
+    width: ${rem(12)};
+    height: ${rem(12)};
+    top: 50%;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    background-color: ${theme.color.key.default};
+    border: ${rem(1)} solid ${theme.color.key.default};
+    cursor: pointer;
+    user-select: none;
+    z-index: 100;
 `}
 `;
 
-const StyledTimeLine = styled.div`
+const TimelineNavigation = styled.div`
   ${({ theme }) =>
+    `
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    background-color: ${theme.color.background.dark};
+  
+`}
+`;
+
+const StyledTimeLineWrapper = styled.div`
+  margin: 0 1.5rem;
+  position: relative;
+  height: 40px;
+  width: 50%;
+`;
+
+const StyledTimeLine = styled.div`
+  ${({ theme, $style }) =>
     `
     pointer-events: auto;
     position: absolute;
-    bottom: 0;
+    top: 50%;
+    transform: translateY(-50%);
     left: 0;
     right: 0;
-    height: ${rem(56)};
-    z-index: 2000;
-    background-color: ${theme.color.key.white};
-    padding: ${rem(16)} ${rem(24)};
+   
     &:before {
       content: '';
       position: absolute;
-      left: ${rem(24)};
-      right: ${rem(24)};
-      height: ${rem(1)};
-      background-color: ${theme.color.key.default};
-      top: ${rem(22)};
+      left: 0;
+      right: 0;
+      height: ${rem(4)};
+      border: 1px solid ${theme.color.key.default};
+      background-color: ${theme.color.key.white};
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
     }
     &:after {
       content: '';
       position: absolute;
-      width: ${rem(2)};
-      height: ${rem(12)};
-      right: ${rem(22)};
-      top: ${rem(16)};
+      width: ${$style};
+      height: ${rem(4)};
+      left: 0;
+      top: 50%;
       background-color: ${theme.color.key.default};
+      transform: translateY(-50%);
+      cursor: pointer;
     }
     @media only screen and (min-width: ${theme.breakPoint}px) {
       opacity: 1;
       pointer-events: auto;
-      height: ${rem(72)};
+    
     }
   `}
 `;
-
-const StyledTime = styled.div`
-  ${({ theme }) => `
-    width: 100%;
-    height: 10px;
-    display: flex;
-    justify-content: space-between;
-    position: relative;
-  `}
-`;
-
-const StyledLabelDot = styled.div`
-  ${({ theme, $label = null, $first = false, $last = false }) => `
-    position: relative;
-    width: ${$label === null ? rem(1) : $last ? 0 : rem(2)};
-    height: ${$label === null ? rem(5) : rem(12)};
-    top: ${$label === null ? rem(2) : 0};
-    background-color: ${theme.color.key.default};
-    ${
-      $label !== null
-        ? `
-        &::after {
-          content: '${$label}';
-          position: absolute;
-          top: ${rem(20)};
-          width: ${rem(28)};
-          left: ${$first ? 0 : $last ? rem(-28) : rem(-14)};
-          opacity: ${$first ? 1 : $last ? 1 : 0};
-          @media only screen and (min-width: ${theme.breakPoint}px) {
-            opacity: 1;
-          }
-        }
-    `
-        : ""
-    }
-  `}
-`;
-
-const Time = () => {
-  const { timelineSettings } = useGlobalState();
-  const points = [];
-  const startYear = getYearFromDateStr(timelineSettings.start);
-  const endYear = getYearFromDateStr(timelineSettings.end);
-
-  for (let i = startYear; i <= endYear; i += 1) {
-    points.push(
-      <StyledLabelDot
-        key={i}
-        $label={i % timelineSettings.increment === 0 ? i : null}
-        $first={i === startYear}
-        $last={i === endYear}
-      ></StyledLabelDot>
-    );
-  }
-  return <StyledTime>{points}</StyledTime>;
-};
-
 const TimeLine = () => {
-  const { time, playing, timelineSettings, timelineSpeed } = useGlobalState();
+  const { time, playing, timelineSpeed } = useGlobalState();
   const dispatch = useDispatch();
   const [dragging, setDragging] = useState(false);
   const ref = useRef();
-  const { year } = calculateDateFromRatio(timelineSettings, time);
 
-  const calculateInterval = (timelineSpeed) => {
-    switch (timelineSpeed) {
-      case "REAL_TIME":
-        return 33; // 33 milliseconds for real-time
-      case "ONE_SECOND":
-        return 1000; // 1000 milliseconds (1 second) for one second per step
-      default:
-        return 33; // Default to 33 milliseconds
-    }
-  };
+  console.log(time);
 
-  useEffect(() => {
-    function handleDrag(event) {
-      if (!!ref.current) {
-        const { clientX } = isMobile ? event.touches[0] : event;
+  const handleEvent = useCallback(
+    (event, isTouch) => {
+      if (ref.current) {
+        const clientX = isTouch ? event.touches[0].clientX : event.clientX;
         const { x, width } = ref.current.getBoundingClientRect();
-        dispatch({
-          type: "UPDATE_TIME",
-          payload: Math.max(0, Math.min(1, (clientX - x - 24) / (width - 48))),
-        });
+        const newTime = Math.max(
+          0,
+          Math.min(1, (clientX - x - 24) / (width - 48))
+        );
+        dispatch({ type: "UPDATE_TIME", payload: newTime });
       }
-    }
-
-    if (!isMobile) {
-      if (dragging) {
-        document.addEventListener("mousemove", handleDrag);
-        document.addEventListener("mouseup", () => {
-          setDragging(false);
-        });
-      } else {
-        document.removeEventListener("mousemove", handleDrag);
-        document.removeEventListener("touchmove", handleDrag);
-      }
-      return () => {
-        document.removeEventListener("mousemove", handleDrag);
-      };
-    } else {
-      if (dragging) {
-        document.addEventListener("touchmove", handleDrag);
-        document.addEventListener("touchend", () => {
-          setDragging(false);
-        });
-      } else {
-        document.removeEventListener("touchmove", handleDrag);
-      }
-      return () => {
-        document.removeEventListener("touchmove", handleDrag);
-      };
-    }
-  }, [dragging, dispatch]);
+    },
+    [dispatch]
+  );
 
   useEffect(() => {
+    const handleDrag = (event) => handleEvent(event, isMobile);
+    const eventType = isMobile ? "touchmove" : "mousemove";
+    const endEventType = isMobile ? "touchend" : "mouseup";
+
+    if (dragging) {
+      document.addEventListener(eventType, handleDrag);
+      document.addEventListener(endEventType, () => setDragging(false));
+    } else {
+      document.removeEventListener(eventType, handleDrag);
+    }
+
+    return () => document.removeEventListener(eventType, handleDrag);
+  }, [dragging, handleEvent]);
+
+  useEffect(() => {
+    let animationFrameId = null;
     let playIntervalId = null;
 
+    const animate = () => {
+      dispatch({ type: "INTERVAL_TIME" });
+      animationFrameId = requestAnimationFrame(animate);
+    };
+
     if (playing === "play") {
-      playIntervalId = setInterval(() => {
-        dispatch({ type: "INTERVAL_TIME" });
-      }, calculateInterval(timelineSpeed));
+      if (timelineSpeed === "REAL_TIME") {
+        animate();
+      } else {
+        playIntervalId = setInterval(() => {
+          dispatch({ type: "INTERVAL_TIME" });
+        }, 1000);
+      }
     } else {
+      // Cleanup
+      if (animationFrameId !== null) {
+        cancelAnimationFrame(animationFrameId);
+      }
       if (playIntervalId !== null) {
         clearInterval(playIntervalId);
       }
     }
 
     return () => {
+      if (animationFrameId !== null) {
+        cancelAnimationFrame(animationFrameId);
+      }
       if (playIntervalId !== null) {
         clearInterval(playIntervalId);
       }
     };
   }, [playing, dispatch, timelineSpeed]);
 
-  // useEffect(() => {
-  //   let animationFrameId = null;
-
-  //   const animate = () => {
-  //     dispatch({ type: "INTERVAL_TIME" });
-  //     animationFrameId = requestAnimationFrame(animate);
-  //   };
-
-  //   if (playing === "play") {
-  //     // Apply will-change to hint at potential changes
-  //     // and use hardware acceleration with transform
-  //     // Adjust this based on your specific animation elements
-  //     // For example: element.style.willChange = 'transform';
-  //     animate();
-  //   } else {
-  //     if (animationFrameId !== null) {
-  //       cancelAnimationFrame(animationFrameId);
-  //     }
-  //   }
-
-  //   return () => {
-  //     if (animationFrameId !== null) {
-  //       cancelAnimationFrame(animationFrameId);
-  //     }
-  //   };
-  // }, [playing, dispatch]);
-
-  const setTime = (value) => {
-    dispatch({ type: "UPDATE_TIME", payload: value });
-  };
-
-  const handleTimeLineClick = (event) => {
-    if (!!ref.current) {
-      const { clientX } = event;
-      const { x, width } = ref.current.getBoundingClientRect();
-      setTime(Math.max(0, Math.min(1, (clientX - x - 24) / (width - 48))));
+  const handleTimeLineClick = (event) => handleEvent(event, false);
+  const handleTooltipDown = () => setDragging(true);
+  const handlePlayPause = () => {
+    if (playing === "play") {
+      dispatch({ type: "PAUSE_TIME" });
+    } else {
+      dispatch({ type: "PLAY_TIME" });
     }
   };
 
-  const handleTooltipDown = (event) => {
-    event.stopPropagation();
-    setDragging(true);
-  };
-
-  const handleTooltipUp = (event) => {
-    event.stopPropagation();
-    setDragging(false);
-  };
-
   return (
-    <StyledTimeLine
-      onMouseDown={handleTimeLineClick}
-      onTouchStart={handleTooltipDown}
-      ref={ref}
-    >
-      <Time />
-      <StyledTooltipWrapper>
-        <StyledTooltip style={{ left: `${time * 100}%` }}>
-          <StyledTooltipLabel
+    <TimelineNavigation>
+      <TimelineButtonPanel>
+        <button
+          onClick={handlePlayPause}
+          id={playing === "play" ? "pause" : "play"}
+        >
+          {playing === "play" ? "pause" : "play"}
+        </button>
+      </TimelineButtonPanel>
+      <StyledTimeLineWrapper>
+        <StyledTimeLine
+          onMouseDown={handleTimeLineClick}
+          onTouchStart={handleTooltipDown}
+          ref={ref}
+          $style={`${time * 100}%`}
+        >
+          <StyledTooltip
+            style={{ left: `${time * 100}%` }}
             onMouseDown={handleTooltipDown}
-            onMouseUp={handleTooltipUp}
-            onTouchStart={handleTooltipDown}
-            onTouchEnd={handleTooltipUp}
-          >
-            {year}
-          </StyledTooltipLabel>
-        </StyledTooltip>
-      </StyledTooltipWrapper>
-    </StyledTimeLine>
+            onMouseUp={() => setDragging(false)}
+            onTouchEnd={() => setDragging(false)}
+          />
+        </StyledTimeLine>
+      </StyledTimeLineWrapper>
+      <TimelineSpeedSelector />
+      <GranularitySelector />
+    </TimelineNavigation>
   );
 };
 

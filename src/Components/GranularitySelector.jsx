@@ -1,14 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { useState as useGlobalState, useDispatch } from "../hooks/useReducer";
 import styled from "styled-components";
 
 const StyledGranularitySelector = styled.div`
-  position: absolute;
-  right: 0;
-  top: 0;
   display: flex;
   gap: 10px;
-  margin-bottom: 20px;
+  color: white;
 `;
 
 const RadioLabel = styled.label`
@@ -35,6 +32,15 @@ const GranularitySelector = () => {
 
   return (
     <StyledGranularitySelector>
+      <RadioLabel>
+        <RadioInput
+          type="radio"
+          value="hour"
+          checked={granularity === "hour"}
+          onChange={handleGranularityChange}
+        />
+        hour
+      </RadioLabel>
       <RadioLabel>
         <RadioInput
           type="radio"
