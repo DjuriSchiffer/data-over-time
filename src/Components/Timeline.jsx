@@ -5,16 +5,32 @@ import { useState as useGlobalState, useDispatch } from "../hooks/useReducer";
 import { isMobile } from "react-device-detect";
 import TimelineSpeedSelector from "./TimelineSpeedSelector";
 import GranularitySelector from "./GranularitySelector";
+import Icon from "./Icon";
 
-const TimelineButtonPanel = styled.aside`
-  ${({ theme }) => `
-      z-index: 9999;
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-    `}
+const TimelineButtonPanel = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0 0 ${rem(16)};
 `;
+
+const TimelinePlayerButton = styled.button`
+  ${({ theme }) =>
+    `
+    width: ${rem(32)};
+    height: ${rem(32)};
+    border-radius: 50%;
+    background-color: ${theme.color.key.default};
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+`}
+`;
+
+const TimelinePlayerIcon = styled(Icon)``;
 
 const StyledTooltip = styled.span`
   ${({ theme }) =>
@@ -47,7 +63,7 @@ const TimelineNavigation = styled.div`
 `;
 
 const StyledTimeLineWrapper = styled.div`
-  margin: 0 1.5rem;
+  margin: 0 ${rem(16)};
   position: relative;
   height: 40px;
   width: 50%;
@@ -94,8 +110,6 @@ const TimeLine = () => {
   const dispatch = useDispatch();
   const [dragging, setDragging] = useState(false);
   const ref = useRef();
-
-  console.log(time);
 
   const handleEvent = useCallback(
     (event, isTouch) => {
@@ -145,7 +159,6 @@ const TimeLine = () => {
         }, 1000);
       }
     } else {
-      // Cleanup
       if (animationFrameId !== null) {
         cancelAnimationFrame(animationFrameId);
       }
@@ -177,12 +190,16 @@ const TimeLine = () => {
   return (
     <TimelineNavigation>
       <TimelineButtonPanel>
-        <button
+        <TimelinePlayerButton
           onClick={handlePlayPause}
           id={playing === "play" ? "pause" : "play"}
         >
-          {playing === "play" ? "pause" : "play"}
-        </button>
+          {playing === "play" ? (
+            <TimelinePlayerIcon color={"white"} id={"Pause"} />
+          ) : (
+            <TimelinePlayerIcon color={"white"} id={"Play"} />
+          )}
+        </TimelinePlayerButton>
       </TimelineButtonPanel>
       <StyledTimeLineWrapper>
         <StyledTimeLine
