@@ -9,7 +9,7 @@ const SECONDS_IN_MONTH = SECONDS_IN_DAY * (DAYS_IN_YEAR / 12); // Approximate mo
 const SECONDS_IN_YEAR = SECONDS_IN_DAY * DAYS_IN_YEAR;
 const MILLISECONDS_IN_DAY = SECONDS_IN_DAY * MILLISECONDS_IN_SECOND;
 
-const MONTH_NAMES = [
+export const MONTH_NAMES = [
   "January",
   "February",
   "March",
@@ -23,7 +23,7 @@ const MONTH_NAMES = [
   "November",
   "December",
 ];
-const DAY_NAMES = [
+export const DAY_NAMES = [
   "Sunday",
   "Monday",
   "Tuesday",

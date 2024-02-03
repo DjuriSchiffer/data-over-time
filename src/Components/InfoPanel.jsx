@@ -1,10 +1,10 @@
 import { rem } from "polished";
+import styled from "styled-components";
 import {
   calculateDateFromRatio,
   calculateRatioFromGranularity,
 } from "../utils/time";
 import { useState } from "../hooks/useReducer";
-import styled from "styled-components";
 
 const StyledInfoPanel = styled.div`
   ${({ theme }) => `
