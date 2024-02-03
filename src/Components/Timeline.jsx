@@ -16,12 +16,11 @@ const TimelineButtonPanel = styled.div`
   margin: 0 0 0 ${rem(16)};
 `;
 
-const TimelinePlayerButton = styled.button`
+export const TimelinePlayerButton = styled.button`
   ${({ theme }) =>
     `
-    width: ${rem(32)};
-    height: ${rem(32)};
-    border-radius: 50%;
+    height: ${rem(24)};
+    border-radius: ${rem(4)};
     background-color: ${theme.color.key.default};
     border: none;
     display: flex;
@@ -30,8 +29,6 @@ const TimelinePlayerButton = styled.button`
     cursor: pointer;
 `}
 `;
-
-const TimelinePlayerIcon = styled(Icon)``;
 
 const StyledTooltip = styled.span`
   ${({ theme }) =>
@@ -65,7 +62,7 @@ const TimelineNavigation = styled.div`
 const StyledTimeLineWrapper = styled.div`
   margin: 0 ${rem(16)};
   position: relative;
-  width: 50%;
+  width: 100%;
 `;
 
 const StyledTimeLine = styled.div`
@@ -198,9 +195,9 @@ const TimeLine = () => {
           id={playing === "play" ? "pause" : "play"}
         >
           {playing === "play" ? (
-            <TimelinePlayerIcon color={"white"} id={"Pause"} />
+            <Icon color={"white"} id={"Pause"} />
           ) : (
-            <TimelinePlayerIcon color={"white"} id={"Play"} />
+            <Icon color={"white"} id={"Play"} />
           )}
         </TimelinePlayerButton>
       </TimelineButtonPanel>

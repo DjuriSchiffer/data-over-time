@@ -1,4 +1,4 @@
-import { FaPlay, FaPause } from "react-icons/fa";
+import { FaPlay, FaPause, FaClock, FaFastForward } from "react-icons/fa";
 
 const Icon = ({ color, id, className }) => {
   switch (id) {
@@ -7,6 +7,12 @@ const Icon = ({ color, id, className }) => {
 
     case "Pause":
       return <FaPause color={color} className={className} />;
+
+    case "Clock":
+      return <FaClock color={color} className={className} />;
+
+    case "FastForward":
+      return <FaFastForward color={color} className={className} />;
 
     default:
       return null;
