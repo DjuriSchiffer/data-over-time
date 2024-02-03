@@ -10,13 +10,8 @@ const StyledInfoPanel = styled.div`
   ${({ theme }) => `
     background-color: ${theme.color.background.dark};
     height: 100%;
-    position: absolute;
-    top: 50%;
-    left: 0;
-    height: 50vh;
-    width: 50vw;
+    width: 100%;
     color: white;
-    padding: ${rem(12)};
    `}
 `;
 

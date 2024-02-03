@@ -9,9 +9,9 @@ const StyledMap = styled.div`
   height: 100%;
   position: absolute;
   top: 0;
-  left: 50%;
-  height: 100vh;
-  width: 50vw;
+  left: 0;
+  height: 100%;
+  width: 100%;
 `;
 
 const MapBox = () => {

@@ -53,20 +53,18 @@ const StyledTooltip = styled.span`
 const TimelineNavigation = styled.div`
   ${({ theme }) =>
     `
-    position: fixed;
-    bottom: 0;
     width: 100%;
     display: flex;
     flex-direction: row;
     background-color: ${theme.color.background.dark};
-  
+    z-index: 1;
+    height: ${rem(40)};
 `}
 `;
 
 const StyledTimeLineWrapper = styled.div`
   margin: 0 ${rem(16)};
   position: relative;
-  height: 40px;
   width: 50%;
 `;
 

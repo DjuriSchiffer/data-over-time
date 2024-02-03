@@ -5,20 +5,15 @@ import { useState } from "../hooks/useReducer";
 
 const StyledHeader = styled.div`
   ${({ theme }) => `
+    width: 100%;
     background-color: ${theme.color.background.dark};
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: ${rem(80)};
+    height: ${rem(40)};
     color: white;
     padding: ${rem(12)};
     z-index: 99999;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    
    `}
 `;
 
