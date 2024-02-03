@@ -62,6 +62,7 @@ const StyledTimeLine = styled.div`
     transform: translateY(-50%);
     left: 0;
     right: 0;
+    opacity: 1;
    
     &:before {
       content: '';
@@ -85,11 +86,6 @@ const StyledTimeLine = styled.div`
       background-color: ${theme.color.key.default};
       transform: translateY(-50%);
       cursor: pointer;
-    }
-    @media only screen and (min-width: ${theme.breakPoint}px) {
-      opacity: 1;
-      pointer-events: auto;
-    
     }
   `}
 `;
