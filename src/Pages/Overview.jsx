@@ -23,7 +23,7 @@ const DebugPanel = styled.div`
    `}
 `;
 
-function Map() {
+function Overview() {
   const { time, timelineSettings, granularity } = useState();
   const {
     year,
@@ -40,7 +40,6 @@ function Map() {
 
   return (
     <>
-      {/* <MapBox /> */}
       <DebugPanel>
         <div>Absolute Time: {time} </div>
         <div>seconds: {seconds} </div>
@@ -65,4 +64,4 @@ function Map() {
   );
 }
 
-export default Map;
+export default Overview;

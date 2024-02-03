@@ -3,7 +3,7 @@ import theme from "./theme";
 import GlobalStyle from "./GlobalStyles";
 import { ThemeProvider } from "styled-components";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Map from "./Pages/Map";
+import Overview from "./Pages/Overview";
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
         <ThemeProvider theme={theme}>
           <GlobalStyle />
           <Routes>
-            <Route path="/" element={<Map />} />
+            <Route path="/" element={<Overview />} />
           </Routes>
         </ThemeProvider>
       </BrowserRouter>
