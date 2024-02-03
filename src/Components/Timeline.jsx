@@ -6,6 +6,7 @@ import { isMobile } from "react-device-detect";
 import TimelineSpeedSelector from "./TimelineSpeedSelector";
 import GranularitySelector from "./GranularitySelector";
 import Icon from "./Icon";
+import { calculateRatioFromGranularity } from "../utils/time";
 
 const TimelineButtonPanel = styled.div`
   display: flex;
@@ -106,25 +107,29 @@ const StyledTimeLine = styled.div`
   `}
 `;
 const TimeLine = () => {
-  const { time, playing, timelineSpeed } = useGlobalState();
+  const { time, playing, timelineSpeed, granularity, timelineSettings } =
+    useGlobalState();
   const dispatch = useDispatch();
   const [dragging, setDragging] = useState(false);
   const ref = useRef();
 
-  const handleEvent = useCallback(
-    (event, isTouch) => {
-      if (ref.current) {
-        const clientX = isTouch ? event.touches[0].clientX : event.clientX;
-        const { x, width } = ref.current.getBoundingClientRect();
-        const newTime = Math.max(
-          0,
-          Math.min(1, (clientX - x - 24) / (width - 48))
-        );
-        dispatch({ type: "UPDATE_TIME", payload: newTime });
-      }
-    },
-    [dispatch]
-  );
+  const handleEvent = (event, isTouch) => {
+    if (ref.current) {
+      const clientX = isTouch ? event.touches[0].clientX : event.clientX;
+      const granularitySpeed = calculateRatioFromGranularity(
+        granularity,
+        timelineSettings
+      );
+      const stepsInTimeline = 1 / granularitySpeed;
+      const { x, width } = ref.current.getBoundingClientRect();
+      const newTime = Math.max(0, Math.min(1, (clientX - x) / width));
+
+      dispatch({
+        type: "UPDATE_TIME",
+        payload: Math.round(newTime * stepsInTimeline) / stepsInTimeline,
+      });
+    }
+  };
 
   useEffect(() => {
     const handleDrag = (event) => handleEvent(event, isMobile);
