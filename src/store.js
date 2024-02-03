@@ -1,5 +1,3 @@
-import records from "./assets/Records.json";
-import { prepareMapData } from "./utils/prepareData";
 import { calculateRatioFromGranularity } from "./utils/time";
 
 const timelineSettings = {
@@ -13,7 +11,6 @@ export const initialStore = {
   timelineSettings: timelineSettings,
   timelineSpeed: "REAL_TIME",
   granularity: "week",
-  mapData: prepareMapData(records.locations),
 };
 
 export const reducer = (state, action) => {
