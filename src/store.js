@@ -2,7 +2,7 @@ import { calculateRatioFromGranularity } from "./utils/time";
 import data from "./data/dummydata.json";
 
 const timelineSettings = {
-  start: new Date("2000-01-01T00:00:00Z").getTime(),
+  start: new Date("1995-01-01T00:00:00Z").getTime(),
   end: Date.now(),
 };
 
@@ -12,7 +12,15 @@ export const initialStore = {
   timelineSettings: timelineSettings,
   timelineSpeed: "REAL_TIME",
   granularity: "week",
-  appData: data,
+  appData: data.reduce((acc, data) => {
+    const { period, region, totals } = data;
+
+    if (!acc[period]) {
+      acc[period] = [];
+    }
+    acc[period].push({ region, totals });
+    return acc;
+  }, {}),
 };
 
 export const reducer = (state, action) => {

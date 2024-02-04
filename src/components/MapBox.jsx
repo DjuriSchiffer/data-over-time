@@ -106,16 +106,18 @@ const MapBox = () => {
   useEffect(() => {
     if (!map.current || !layersInitialized || !appData) return;
 
-    const maxPopulation = Math.max(...appData.map((data) => data.totals));
+    const dataForYear = appData[year];
+
+    const maxPopulation = dataForYear
+      ? Math.max(...dataForYear.map((data) => data.totals))
+      : 0;
     const maxRadius = 50;
 
-    appData.forEach((data) => {
-      if (data.period === year) {
-        const provinceIndex = Object.keys(provincesCenters).indexOf(
-          data.region
-        );
+    if (dataForYear) {
+      dataForYear.forEach(({ region, totals }) => {
+        const provinceIndex = Object.keys(provincesCenters).indexOf(region);
         if (provinceIndex !== -1) {
-          const populationPercentage = (data.totals / maxPopulation) * 100;
+          const populationPercentage = (totals / maxPopulation) * 100;
           const radius = populationPercentage * (maxRadius / 50);
 
           if (map.current.getLayer(`circle${provinceIndex}`)) {
@@ -126,24 +128,21 @@ const MapBox = () => {
             );
           }
 
-          // Update the source data to include the totals, so the text field can use it
           const sourceId = `circleSource${provinceIndex}`;
           const source = map.current.getSource(sourceId);
           if (source) {
             source.setData({
               type: "Feature",
-              properties: {
-                totals: data.totals, // Make sure this property is updated with current totals
-              },
+              properties: { totals },
               geometry: {
                 type: "Point",
-                coordinates: provincesCenters[data.region],
+                coordinates: provincesCenters[region],
               },
             });
           }
         }
-      }
-    });
+      });
+    }
   }, [year, layersInitialized, appData]);
 
   return <StyledMap ref={mapContainer} />;
