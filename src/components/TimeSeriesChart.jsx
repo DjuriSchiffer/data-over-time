@@ -46,18 +46,18 @@ const TimeSeriesChart = () => {
   });
 
   const provincesColors = {
-    Groningen: "rgba(255, 99, 132, 0.1)",
-    Fryslân: "rgba(54, 162, 235, 0.1)",
-    Drenthe: "rgba(255, 206, 86, 0.1)",
-    Overijssel: "rgba(75, 192, 192, 0.1)",
-    Flevoland: "rgba(153, 102, 255, 0.1)",
-    Gelderland: "rgba(255, 159, 64, 0.1)",
-    Utrecht: "rgba(199, 199, 199, 0.1)",
-    "Noord-Holland": "rgba(199, 199, 199, 0.1)",
-    "Zuid-Holland": "rgba(199, 199, 199, 0.1)",
-    Zeeland: "rgba(199, 199, 199, 0.1)",
-    "Noord-Brabant": "rgba(199, 199, 199, 0.1)",
-    Limburg: "rgba(199, 199, 199, 0.1)",
+    Groningen: "rgba(255, 99, 132, 0.1)", // Pink
+    Fryslân: "rgba(54, 162, 235, 0.1)", // Blue
+    Drenthe: "rgba(255, 206, 86, 0.1)", // Yellow
+    Overijssel: "rgba(75, 192, 192, 0.1)", // Teal
+    Flevoland: "rgba(153, 102, 255, 0.1)", // Purple
+    Gelderland: "rgba(255, 159, 64, 0.1)", // Orange
+    Utrecht: "rgba(22, 160, 133, 0.1)", // Green
+    "Noord-Holland": "rgba(41, 128, 185, 0.1)", // Navy Blue
+    "Zuid-Holland": "rgba(243, 156, 18, 0.1)", // Tangerine
+    Zeeland: "rgba(211, 84, 0, 0.1)", // Dark Orange
+    "Noord-Brabant": "rgba(142, 68, 173, 0.1)", // Dark Purple
+    Limburg: "rgba(192, 57, 43, 0.1)", // Red
   };
 
   useEffect(() => {
@@ -86,8 +86,9 @@ const TimeSeriesChart = () => {
       return {
         label: region,
         data: regionData,
-        fill: false,
-        borderColor: baseColor, // Use the base color for the line
+        fill: true,
+        borderColor: baseColor,
+        backgroundColor: baseColor.replace("0.1", "1"),
         pointBackgroundColor: pointBackgroundColor,
         borderWidth: 2,
         pointRadius: 5,
@@ -111,6 +112,7 @@ const TimeSeriesChart = () => {
     plugins: {
       legend: {
         display: true,
+        fill: true,
       },
       tooltip: {
         enabled: true,

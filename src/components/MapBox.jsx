@@ -24,34 +24,55 @@ const MapBox = () => {
   const [isMapInitialized, setMapInitialized] = useState(false);
   const [layersInitialized, setLayersInitialized] = useState(false);
 
-  const provincesColors = {
-    Groningen: "rgba(255, 99, 132, 0.5)",
-    Fryslân: "rgba(54, 162, 235, 0.5)",
-    Drenthe: "rgba(255, 206, 86, 0.5)",
-    Overijssel: "rgba(75, 192, 192, 0.5)",
-    Flevoland: "rgba(153, 102, 255, 0.5)",
-    Gelderland: "rgba(255, 159, 64, 0.5)",
-    Utrecht: "rgba(199, 199, 199, 0.5)",
-    "Noord-Holland": "rgba(199, 199, 199, 0.5)",
-    "Zuid-Holland": "rgba(199, 199, 199, 0.5)",
-    Zeeland: "rgba(199, 199, 199, 0.5)",
-    "Noord-Brabant": "rgba(199, 199, 199, 0.5)",
-    Limburg: "rgba(199, 199, 199, 0.5)",
-  };
-
-  const provincesCenters = {
-    Groningen: [6.8007, 53.2],
-    Fryslân: [5.8, 53.1],
-    Drenthe: [6.6, 52.9],
-    Overijssel: [6.4, 52.5],
-    Flevoland: [5.5, 52.5],
-    Gelderland: [5.9, 52.0],
-    Utrecht: [5.2, 52.1],
-    "Noord-Holland": [4.9, 52.6],
-    "Zuid-Holland": [4.6, 52.0],
-    Zeeland: [3.8, 51.3],
-    "Noord-Brabant": [5.0, 51.5],
-    Limburg: [5.9, 51.2],
+  const provincesData = {
+    Groningen: {
+      coordinates: [6.8007, 53.2],
+      color: "rgba(255, 99, 132, 0.5)", // Pink
+    },
+    Fryslân: {
+      coordinates: [5.8, 53.1],
+      color: "rgba(54, 162, 235, 0.5)", // Blue
+    },
+    Drenthe: {
+      color: "rgba(255, 206, 86, 0.5)", // Yellow
+      coordinates: [6.6, 52.9],
+    },
+    Overijssel: {
+      color: "rgba(75, 192, 192, 0.5)", // Teal
+      coordinates: [6.4, 52.5],
+    },
+    Flevoland: {
+      color: "rgba(153, 102, 255, 0.5)", // Purple
+      coordinates: [5.5, 52.5],
+    },
+    Gelderland: {
+      coordinates: [5.9, 52.0],
+      color: "rgba(255, 159, 64, 0.5)", // Orange
+    },
+    Utrecht: {
+      coordinates: [5.2, 52.1],
+      color: "rgba(22, 160, 133, 0.5)", // Green
+    },
+    "Noord-Holland": {
+      coordinates: [4.9, 52.6],
+      color: "rgba(41, 128, 185, 0.5)", // Navy Blue
+    },
+    "Zuid-Holland": {
+      coordinates: [4.6, 52.0],
+      color: "rgba(243, 156, 18, 0.5)", // Tangerine
+    },
+    Zeeland: {
+      coordinates: [3.8, 51.3],
+      color: "rgba(211, 84, 0, 0.5)", // Dark Orange
+    },
+    "Noord-Brabant": {
+      coordinates: [5.0, 51.5],
+      color: "rgba(142, 68, 173, 0.5)", // Dark Purple
+    },
+    Limburg: {
+      coordinates: [5.9, 51.2],
+      color: "rgba(192, 57, 43, 0.5)", // Red
+    },
   };
 
   // Initialize the map
@@ -73,7 +94,7 @@ const MapBox = () => {
   useEffect(() => {
     if (!map.current || !isMapInitialized) return;
 
-    Object.entries(provincesCenters).forEach((coords, index) => {
+    Object.entries(provincesData).forEach(([name, data], index) => {
       const sourceId = `circleSource${index}`;
 
       map.current.addSource(`circleSource${index}`, {
@@ -82,7 +103,7 @@ const MapBox = () => {
           type: "Feature",
           geometry: {
             type: "Point",
-            coordinates: coords[1],
+            coordinates: data.coordinates,
           },
         },
       });
@@ -93,7 +114,7 @@ const MapBox = () => {
         type: "circle",
         paint: {
           "circle-radius": 0,
-          "circle-color": provincesColors[coords[0]],
+          "circle-color": data.color,
           "circle-opacity": 0.5,
         },
       });
@@ -130,7 +151,8 @@ const MapBox = () => {
 
     if (dataForYear) {
       dataForYear.forEach(({ region, totals }) => {
-        const provinceIndex = Object.keys(provincesCenters).indexOf(region);
+        const provinceIndex = Object.keys(provincesData).indexOf(region);
+
         if (provinceIndex !== -1) {
           const populationPercentage = (totals / maxPopulation) * 100;
           const radius = populationPercentage * (maxRadius / 50);
@@ -151,7 +173,7 @@ const MapBox = () => {
               properties: { totals },
               geometry: {
                 type: "Point",
-                coordinates: provincesCenters[region],
+                coordinates: provincesData[region].coordinates,
               },
             });
           }
