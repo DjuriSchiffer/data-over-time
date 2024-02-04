@@ -3,7 +3,20 @@ import { useState as useGlobalState, useDispatch } from "../hooks/useReducer";
 import styled from "styled-components";
 import Icon from "./Icon";
 import { rem } from "polished";
-import { TimelinePlayerButton } from "./Timeline";
+
+const TimelinePlayerButton = styled.button`
+  ${({ theme }) =>
+    `
+    height: ${rem(24)};
+    border-radius: ${rem(4)};
+    background-color: ${theme.color.key.default};
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+`}
+`;
 
 const StyledGranularitySelector = styled.div`
   position: relative;

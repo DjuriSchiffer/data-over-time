@@ -1,9 +1,8 @@
-import MapBox from "../Components/MapBox";
-import TimeLine from "../Components/Timeline";
-import TimeSeriesChart from "../Components/TimeSeriesChart";
-import InfoPanel from "../Components/InfoPanel";
+import MapBox from "../components/MapBox";
+import TimeLine from "../components/Timeline";
+import TimeSeriesChart from "../components/TimeSeriesChart";
 import styled from "styled-components";
-
+import InfoPanel from "../components/InfoPanel";
 
 const StyledOverView = styled.div`
   display: grid;

@@ -16,7 +16,7 @@ const TimelineButtonPanel = styled.div`
   margin: 0 0 0 ${rem(16)};
 `;
 
-export const TimelinePlayerButton = styled.button`
+const TimelinePlayerButton = styled.button`
   ${({ theme }) =>
     `
     height: ${rem(24)};

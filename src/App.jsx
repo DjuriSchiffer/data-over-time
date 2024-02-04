@@ -3,7 +3,7 @@ import theme from "./theme";
 import GlobalStyle from "./GlobalStyles";
 import { ThemeProvider } from "styled-components";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Overview from "./Pages/Overview";
+import Overview from "./pages/Overview";
 
 function App() {
   return (
