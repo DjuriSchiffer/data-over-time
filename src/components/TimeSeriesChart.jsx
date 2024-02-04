@@ -102,6 +102,7 @@ const TimeSeriesChart = () => {
   }, [appData, year]);
 
   const chartOptions = {
+    animation: false,
     responsive: true,
     maintainAspectRatio: false,
     scales: {
