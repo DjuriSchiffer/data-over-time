@@ -24,6 +24,21 @@ const MapBox = () => {
   const [isMapInitialized, setMapInitialized] = useState(false);
   const [layersInitialized, setLayersInitialized] = useState(false);
 
+  const provincesColors = {
+    Groningen: "rgba(255, 99, 132, 0.5)",
+    Fryslân: "rgba(54, 162, 235, 0.5)",
+    Drenthe: "rgba(255, 206, 86, 0.5)",
+    Overijssel: "rgba(75, 192, 192, 0.5)",
+    Flevoland: "rgba(153, 102, 255, 0.5)",
+    Gelderland: "rgba(255, 159, 64, 0.5)",
+    Utrecht: "rgba(199, 199, 199, 0.5)",
+    "Noord-Holland": "rgba(199, 199, 199, 0.5)",
+    "Zuid-Holland": "rgba(199, 199, 199, 0.5)",
+    Zeeland: "rgba(199, 199, 199, 0.5)",
+    "Noord-Brabant": "rgba(199, 199, 199, 0.5)",
+    Limburg: "rgba(199, 199, 199, 0.5)",
+  };
+
   const provincesCenters = {
     Groningen: [6.8007, 53.2],
     Fryslân: [5.8, 53.1],
@@ -78,7 +93,7 @@ const MapBox = () => {
         type: "circle",
         paint: {
           "circle-radius": 0,
-          "circle-color": "#fac815",
+          "circle-color": provincesColors[coords[0]],
           "circle-opacity": 0.5,
         },
       });
