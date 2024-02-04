@@ -1,0 +1,1742 @@
+[
+  {
+    "period": 1995,
+    "region": "Groningen",
+    "totals": 557995
+  },
+  {
+    "period": 1996,
+    "region": "Groningen",
+    "totals": 558113
+  },
+  {
+    "period": 1997,
+    "region": "Groningen",
+    "totals": 558124
+  },
+  {
+    "period": 1998,
+    "region": "Groningen",
+    "totals": 558017
+  },
+  {
+    "period": 1999,
+    "region": "Groningen",
+    "totals": 559988
+  },
+  {
+    "period": 2000,
+    "region": "Groningen",
+    "totals": 562646
+  },
+  {
+    "period": 2001,
+    "region": "Groningen",
+    "totals": 566489
+  },
+  {
+    "period": 2002,
+    "region": "Groningen",
+    "totals": 570480
+  },
+  {
+    "period": 2003,
+    "region": "Groningen",
+    "totals": 572997
+  },
+  {
+    "period": 2004,
+    "region": "Groningen",
+    "totals": 574384
+  },
+  {
+    "period": 2005,
+    "region": "Groningen",
+    "totals": 575072
+  },
+  {
+    "period": 2006,
+    "region": "Groningen",
+    "totals": 574042
+  },
+  {
+    "period": 2007,
+    "region": "Groningen",
+    "totals": 573614
+  },
+  {
+    "period": 2008,
+    "region": "Groningen",
+    "totals": 573459
+  },
+  {
+    "period": 2009,
+    "region": "Groningen",
+    "totals": 574092
+  },
+  {
+    "period": 2010,
+    "region": "Groningen",
+    "totals": 576668
+  },
+  {
+    "period": 2011,
+    "region": "Groningen",
+    "totals": 579036
+  },
+  {
+    "period": 2012,
+    "region": "Groningen",
+    "totals": 580875
+  },
+  {
+    "period": 2013,
+    "region": "Groningen",
+    "totals": 581705
+  },
+  {
+    "period": 2014,
+    "region": "Groningen",
+    "totals": 582728
+  },
+  {
+    "period": 2015,
+    "region": "Groningen",
+    "totals": 583942
+  },
+  {
+    "period": 2016,
+    "region": "Groningen",
+    "totals": 583721
+  },
+  {
+    "period": 2017,
+    "region": "Groningen",
+    "totals": 583581
+  },
+  {
+    "period": 2018,
+    "region": "Groningen",
+    "totals": 582944
+  },
+  {
+    "period": 2019,
+    "region": "Groningen",
+    "totals": 583990
+  },
+  {
+    "period": 2020,
+    "region": "Groningen",
+    "totals": 585866
+  },
+  {
+    "period": 2021,
+    "region": "Groningen",
+    "totals": 586937
+  },
+  {
+    "period": 2022,
+    "region": "Groningen",
+    "totals": 590170
+  },
+  {
+    "period": 2023,
+    "region": "Groningen",
+    "totals": 596075
+  },
+  {
+    "period": 1995,
+    "region": "Fryslân",
+    "totals": 609579
+  },
+  {
+    "period": 1996,
+    "region": "Fryslân",
+    "totals": 612028
+  },
+  {
+    "period": 1997,
+    "region": "Fryslân",
+    "totals": 615045
+  },
+  {
+    "period": 1998,
+    "region": "Fryslân",
+    "totals": 618115
+  },
+  {
+    "period": 1999,
+    "region": "Fryslân",
+    "totals": 621222
+  },
+  {
+    "period": 2000,
+    "region": "Fryslân",
+    "totals": 624500
+  },
+  {
+    "period": 2001,
+    "region": "Fryslân",
+    "totals": 630539
+  },
+  {
+    "period": 2002,
+    "region": "Fryslân",
+    "totals": 636184
+  },
+  {
+    "period": 2003,
+    "region": "Fryslân",
+    "totals": 639787
+  },
+  {
+    "period": 2004,
+    "region": "Fryslân",
+    "totals": 642066
+  },
+  {
+    "period": 2005,
+    "region": "Fryslân",
+    "totals": 642977
+  },
+  {
+    "period": 2006,
+    "region": "Fryslân",
+    "totals": 642230
+  },
+  {
+    "period": 2007,
+    "region": "Fryslân",
+    "totals": 642209
+  },
+  {
+    "period": 2008,
+    "region": "Fryslân",
+    "totals": 643189
+  },
+  {
+    "period": 2009,
+    "region": "Fryslân",
+    "totals": 644811
+  },
+  {
+    "period": 2010,
+    "region": "Fryslân",
+    "totals": 646305
+  },
+  {
+    "period": 2011,
+    "region": "Fryslân",
+    "totals": 647282
+  },
+  {
+    "period": 2012,
+    "region": "Fryslân",
+    "totals": 647214
+  },
+  {
+    "period": 2013,
+    "region": "Fryslân",
+    "totals": 646862
+  },
+  {
+    "period": 2014,
+    "region": "Fryslân",
+    "totals": 646317
+  },
+  {
+    "period": 2015,
+    "region": "Fryslân",
+    "totals": 646257
+  },
+  {
+    "period": 2016,
+    "region": "Fryslân",
+    "totals": 646040
+  },
+  {
+    "period": 2017,
+    "region": "Fryslân",
+    "totals": 646874
+  },
+  {
+    "period": 2018,
+    "region": "Fryslân",
+    "totals": 647268
+  },
+  {
+    "period": 2019,
+    "region": "Fryslân",
+    "totals": 647672
+  },
+  {
+    "period": 2020,
+    "region": "Fryslân",
+    "totals": 649957
+  },
+  {
+    "period": 2021,
+    "region": "Fryslân",
+    "totals": 651435
+  },
+  {
+    "period": 2022,
+    "region": "Fryslân",
+    "totals": 654019
+  },
+  {
+    "period": 2023,
+    "region": "Fryslân",
+    "totals": 659551
+  },
+  {
+    "period": 1995,
+    "region": "Drenthe",
+    "totals": 454864
+  },
+  {
+    "period": 1996,
+    "region": "Drenthe",
+    "totals": 457316
+  },
+  {
+    "period": 1997,
+    "region": "Drenthe",
+    "totals": 460817
+  },
+  {
+    "period": 1998,
+    "region": "Drenthe",
+    "totals": 464672
+  },
+  {
+    "period": 1999,
+    "region": "Drenthe",
+    "totals": 467093
+  },
+  {
+    "period": 2000,
+    "region": "Drenthe",
+    "totals": 469806
+  },
+  {
+    "period": 2001,
+    "region": "Drenthe",
+    "totals": 474506
+  },
+  {
+    "period": 2002,
+    "region": "Drenthe",
+    "totals": 478799
+  },
+  {
+    "period": 2003,
+    "region": "Drenthe",
+    "totals": 481254
+  },
+  {
+    "period": 2004,
+    "region": "Drenthe",
+    "totals": 482415
+  },
+  {
+    "period": 2005,
+    "region": "Drenthe",
+    "totals": 483369
+  },
+  {
+    "period": 2006,
+    "region": "Drenthe",
+    "totals": 484481
+  },
+  {
+    "period": 2007,
+    "region": "Drenthe",
+    "totals": 486197
+  },
+  {
+    "period": 2008,
+    "region": "Drenthe",
+    "totals": 488135
+  },
+  {
+    "period": 2009,
+    "region": "Drenthe",
+    "totals": 489918
+  },
+  {
+    "period": 2010,
+    "region": "Drenthe",
+    "totals": 490981
+  },
+  {
+    "period": 2011,
+    "region": "Drenthe",
+    "totals": 491411
+  },
+  {
+    "period": 2012,
+    "region": "Drenthe",
+    "totals": 490807
+  },
+  {
+    "period": 2013,
+    "region": "Drenthe",
+    "totals": 489918
+  },
+  {
+    "period": 2014,
+    "region": "Drenthe",
+    "totals": 488988
+  },
+  {
+    "period": 2015,
+    "region": "Drenthe",
+    "totals": 488576
+  },
+  {
+    "period": 2016,
+    "region": "Drenthe",
+    "totals": 488629
+  },
+  {
+    "period": 2017,
+    "region": "Drenthe",
+    "totals": 491792
+  },
+  {
+    "period": 2018,
+    "region": "Drenthe",
+    "totals": 492100
+  },
+  {
+    "period": 2019,
+    "region": "Drenthe",
+    "totals": 492167
+  },
+  {
+    "period": 2020,
+    "region": "Drenthe",
+    "totals": 493682
+  },
+  {
+    "period": 2021,
+    "region": "Drenthe",
+    "totals": 494771
+  },
+  {
+    "period": 2022,
+    "region": "Drenthe",
+    "totals": 497743
+  },
+  {
+    "period": 2023,
+    "region": "Drenthe",
+    "totals": 502051
+  },
+  {
+    "period": 1995,
+    "region": "Overijssel",
+    "totals": 1050389
+  },
+  {
+    "period": 1996,
+    "region": "Overijssel",
+    "totals": 1053966
+  },
+  {
+    "period": 1997,
+    "region": "Overijssel",
+    "totals": 1057944
+  },
+  {
+    "period": 1998,
+    "region": "Overijssel",
+    "totals": 1063527
+  },
+  {
+    "period": 1999,
+    "region": "Overijssel",
+    "totals": 1070444
+  },
+  {
+    "period": 2000,
+    "region": "Overijssel",
+    "totals": 1077625
+  },
+  {
+    "period": 2001,
+    "region": "Overijssel",
+    "totals": 1086280
+  },
+  {
+    "period": 2002,
+    "region": "Overijssel",
+    "totals": 1094032
+  },
+  {
+    "period": 2003,
+    "region": "Overijssel",
+    "totals": 1100677
+  },
+  {
+    "period": 2004,
+    "region": "Overijssel",
+    "totals": 1105512
+  },
+  {
+    "period": 2005,
+    "region": "Overijssel",
+    "totals": 1109432
+  },
+  {
+    "period": 2006,
+    "region": "Overijssel",
+    "totals": 1113529
+  },
+  {
+    "period": 2007,
+    "region": "Overijssel",
+    "totals": 1116374
+  },
+  {
+    "period": 2008,
+    "region": "Overijssel",
+    "totals": 1119994
+  },
+  {
+    "period": 2009,
+    "region": "Overijssel",
+    "totals": 1125435
+  },
+  {
+    "period": 2010,
+    "region": "Overijssel",
+    "totals": 1130345
+  },
+  {
+    "period": 2011,
+    "region": "Overijssel",
+    "totals": 1134465
+  },
+  {
+    "period": 2012,
+    "region": "Overijssel",
+    "totals": 1137668
+  },
+  {
+    "period": 2013,
+    "region": "Overijssel",
+    "totals": 1139350
+  },
+  {
+    "period": 2014,
+    "region": "Overijssel",
+    "totals": 1139697
+  },
+  {
+    "period": 2015,
+    "region": "Overijssel",
+    "totals": 1140652
+  },
+  {
+    "period": 2016,
+    "region": "Overijssel",
+    "totals": 1144280
+  },
+  {
+    "period": 2017,
+    "region": "Overijssel",
+    "totals": 1147687
+  },
+  {
+    "period": 2018,
+    "region": "Overijssel",
+    "totals": 1151501
+  },
+  {
+    "period": 2019,
+    "region": "Overijssel",
+    "totals": 1156431
+  },
+  {
+    "period": 2020,
+    "region": "Overijssel",
+    "totals": 1162406
+  },
+  {
+    "period": 2021,
+    "region": "Overijssel",
+    "totals": 1166533
+  },
+  {
+    "period": 2022,
+    "region": "Overijssel",
+    "totals": 1171910
+  },
+  {
+    "period": 2023,
+    "region": "Overijssel",
+    "totals": 1184333
+  },
+  {
+    "period": 1995,
+    "region": "Flevoland",
+    "totals": 262325
+  },
+  {
+    "period": 1996,
+    "region": "Flevoland",
+    "totals": 272843
+  },
+  {
+    "period": 1997,
+    "region": "Flevoland",
+    "totals": 281472
+  },
+  {
+    "period": 1998,
+    "region": "Flevoland",
+    "totals": 293286
+  },
+  {
+    "period": 1999,
+    "region": "Flevoland",
+    "totals": 306468
+  },
+  {
+    "period": 2000,
+    "region": "Flevoland",
+    "totals": 317206
+  },
+  {
+    "period": 2001,
+    "region": "Flevoland",
+    "totals": 328936
+  },
+  {
+    "period": 2002,
+    "region": "Flevoland",
+    "totals": 341721
+  },
+  {
+    "period": 2003,
+    "region": "Flevoland",
+    "totals": 351680
+  },
+  {
+    "period": 2004,
+    "region": "Flevoland",
+    "totals": 359904
+  },
+  {
+    "period": 2005,
+    "region": "Flevoland",
+    "totals": 365859
+  },
+  {
+    "period": 2006,
+    "region": "Flevoland",
+    "totals": 370656
+  },
+  {
+    "period": 2007,
+    "region": "Flevoland",
+    "totals": 374424
+  },
+  {
+    "period": 2008,
+    "region": "Flevoland",
+    "totals": 378688
+  },
+  {
+    "period": 2009,
+    "region": "Flevoland",
+    "totals": 383449
+  },
+  {
+    "period": 2010,
+    "region": "Flevoland",
+    "totals": 387881
+  },
+  {
+    "period": 2011,
+    "region": "Flevoland",
+    "totals": 391967
+  },
+  {
+    "period": 2012,
+    "region": "Flevoland",
+    "totals": 395525
+  },
+  {
+    "period": 2013,
+    "region": "Flevoland",
+    "totals": 398441
+  },
+  {
+    "period": 2014,
+    "region": "Flevoland",
+    "totals": 399893
+  },
+  {
+    "period": 2015,
+    "region": "Flevoland",
+    "totals": 401791
+  },
+  {
+    "period": 2016,
+    "region": "Flevoland",
+    "totals": 404068
+  },
+  {
+    "period": 2017,
+    "region": "Flevoland",
+    "totals": 407818
+  },
+  {
+    "period": 2018,
+    "region": "Flevoland",
+    "totals": 411670
+  },
+  {
+    "period": 2019,
+    "region": "Flevoland",
+    "totals": 416546
+  },
+  {
+    "period": 2020,
+    "region": "Flevoland",
+    "totals": 423021
+  },
+  {
+    "period": 2021,
+    "region": "Flevoland",
+    "totals": 428226
+  },
+  {
+    "period": 2022,
+    "region": "Flevoland",
+    "totals": 434771
+  },
+  {
+    "period": 2023,
+    "region": "Flevoland",
+    "totals": 444701
+  },
+  {
+    "period": 1995,
+    "region": "Gelderland",
+    "totals": 1864732
+  },
+  {
+    "period": 1996,
+    "region": "Gelderland",
+    "totals": 1876299
+  },
+  {
+    "period": 1997,
+    "region": "Gelderland",
+    "totals": 1886109
+  },
+  {
+    "period": 1998,
+    "region": "Gelderland",
+    "totals": 1895656
+  },
+  {
+    "period": 1999,
+    "region": "Gelderland",
+    "totals": 1906778
+  },
+  {
+    "period": 2000,
+    "region": "Gelderland",
+    "totals": 1919158
+  },
+  {
+    "period": 2001,
+    "region": "Gelderland",
+    "totals": 1934314
+  },
+  {
+    "period": 2002,
+    "region": "Gelderland",
+    "totals": 1949233
+  },
+  {
+    "period": 2003,
+    "region": "Gelderland",
+    "totals": 1960422
+  },
+  {
+    "period": 2004,
+    "region": "Gelderland",
+    "totals": 1966929
+  },
+  {
+    "period": 2005,
+    "region": "Gelderland",
+    "totals": 1972010
+  },
+  {
+    "period": 2006,
+    "region": "Gelderland",
+    "totals": 1975704
+  },
+  {
+    "period": 2007,
+    "region": "Gelderland",
+    "totals": 1979059
+  },
+  {
+    "period": 2008,
+    "region": "Gelderland",
+    "totals": 1983869
+  },
+  {
+    "period": 2009,
+    "region": "Gelderland",
+    "totals": 1991062
+  },
+  {
+    "period": 2010,
+    "region": "Gelderland",
+    "totals": 1998936
+  },
+  {
+    "period": 2011,
+    "region": "Gelderland",
+    "totals": 2004671
+  },
+  {
+    "period": 2012,
+    "region": "Gelderland",
+    "totals": 2010745
+  },
+  {
+    "period": 2013,
+    "region": "Gelderland",
+    "totals": 2015791
+  },
+  {
+    "period": 2014,
+    "region": "Gelderland",
+    "totals": 2019692
+  },
+  {
+    "period": 2015,
+    "region": "Gelderland",
+    "totals": 2026578
+  },
+  {
+    "period": 2016,
+    "region": "Gelderland",
+    "totals": 2035351
+  },
+  {
+    "period": 2017,
+    "region": "Gelderland",
+    "totals": 2047901
+  },
+  {
+    "period": 2018,
+    "region": "Gelderland",
+    "totals": 2060103
+  },
+  {
+    "period": 2019,
+    "region": "Gelderland",
+    "totals": 2071972
+  },
+  {
+    "period": 2020,
+    "region": "Gelderland",
+    "totals": 2085952
+  },
+  {
+    "period": 2021,
+    "region": "Gelderland",
+    "totals": 2096603
+  },
+  {
+    "period": 2022,
+    "region": "Gelderland",
+    "totals": 2110472
+  },
+  {
+    "period": 2023,
+    "region": "Gelderland",
+    "totals": 2133708
+  },
+  {
+    "period": 1995,
+    "region": "Utrecht",
+    "totals": 1063460
+  },
+  {
+    "period": 1996,
+    "region": "Utrecht",
+    "totals": 1070585
+  },
+  {
+    "period": 1997,
+    "region": "Utrecht",
+    "totals": 1079428
+  },
+  {
+    "period": 1998,
+    "region": "Utrecht",
+    "totals": 1088621
+  },
+  {
+    "period": 1999,
+    "region": "Utrecht",
+    "totals": 1098722
+  },
+  {
+    "period": 2000,
+    "region": "Utrecht",
+    "totals": 1107849
+  },
+  {
+    "period": 2001,
+    "region": "Utrecht",
+    "totals": 1117997
+  },
+  {
+    "period": 2002,
+    "region": "Utrecht",
+    "totals": 1139925
+  },
+  {
+    "period": 2003,
+    "region": "Utrecht",
+    "totals": 1152218
+  },
+  {
+    "period": 2004,
+    "region": "Utrecht",
+    "totals": 1162258
+  },
+  {
+    "period": 2005,
+    "region": "Utrecht",
+    "totals": 1171291
+  },
+  {
+    "period": 2006,
+    "region": "Utrecht",
+    "totals": 1180039
+  },
+  {
+    "period": 2007,
+    "region": "Utrecht",
+    "totals": 1190604
+  },
+  {
+    "period": 2008,
+    "region": "Utrecht",
+    "totals": 1201350
+  },
+  {
+    "period": 2009,
+    "region": "Utrecht",
+    "totals": 1210869
+  },
+  {
+    "period": 2010,
+    "region": "Utrecht",
+    "totals": 1220910
+  },
+  {
+    "period": 2011,
+    "region": "Utrecht",
+    "totals": 1228794
+  },
+  {
+    "period": 2012,
+    "region": "Utrecht",
+    "totals": 1237117
+  },
+  {
+    "period": 2013,
+    "region": "Utrecht",
+    "totals": 1245294
+  },
+  {
+    "period": 2014,
+    "region": "Utrecht",
+    "totals": 1253672
+  },
+  {
+    "period": 2015,
+    "region": "Utrecht",
+    "totals": 1263572
+  },
+  {
+    "period": 2016,
+    "region": "Utrecht",
+    "totals": 1273613
+  },
+  {
+    "period": 2017,
+    "region": "Utrecht",
+    "totals": 1284504
+  },
+  {
+    "period": 2018,
+    "region": "Utrecht",
+    "totals": 1295484
+  },
+  {
+    "period": 2019,
+    "region": "Utrecht",
+    "totals": 1342158
+  },
+  {
+    "period": 2020,
+    "region": "Utrecht",
+    "totals": 1354834
+  },
+  {
+    "period": 2021,
+    "region": "Utrecht",
+    "totals": 1361153
+  },
+  {
+    "period": 2022,
+    "region": "Utrecht",
+    "totals": 1369873
+  },
+  {
+    "period": 2023,
+    "region": "Utrecht",
+    "totals": 1387643
+  },
+  {
+    "period": 1995,
+    "region": "Noord-Holland",
+    "totals": 2463611
+  },
+  {
+    "period": 1996,
+    "region": "Noord-Holland",
+    "totals": 2468432
+  },
+  {
+    "period": 1997,
+    "region": "Noord-Holland",
+    "totals": 2474754
+  },
+  {
+    "period": 1998,
+    "region": "Noord-Holland",
+    "totals": 2486105
+  },
+  {
+    "period": 1999,
+    "region": "Noord-Holland",
+    "totals": 2503158
+  },
+  {
+    "period": 2000,
+    "region": "Noord-Holland",
+    "totals": 2518354
+  },
+  {
+    "period": 2001,
+    "region": "Noord-Holland",
+    "totals": 2534599
+  },
+  {
+    "period": 2002,
+    "region": "Noord-Holland",
+    "totals": 2559477
+  },
+  {
+    "period": 2003,
+    "region": "Noord-Holland",
+    "totals": 2573120
+  },
+  {
+    "period": 2004,
+    "region": "Noord-Holland",
+    "totals": 2587265
+  },
+  {
+    "period": 2005,
+    "region": "Noord-Holland",
+    "totals": 2599103
+  },
+  {
+    "period": 2006,
+    "region": "Noord-Holland",
+    "totals": 2606584
+  },
+  {
+    "period": 2007,
+    "region": "Noord-Holland",
+    "totals": 2613070
+  },
+  {
+    "period": 2008,
+    "region": "Noord-Holland",
+    "totals": 2626163
+  },
+  {
+    "period": 2009,
+    "region": "Noord-Holland",
+    "totals": 2646445
+  },
+  {
+    "period": 2010,
+    "region": "Noord-Holland",
+    "totals": 2669084
+  },
+  {
+    "period": 2011,
+    "region": "Noord-Holland",
+    "totals": 2691477
+  },
+  {
+    "period": 2012,
+    "region": "Noord-Holland",
+    "totals": 2709822
+  },
+  {
+    "period": 2013,
+    "region": "Noord-Holland",
+    "totals": 2724300
+  },
+  {
+    "period": 2014,
+    "region": "Noord-Holland",
+    "totals": 2741369
+  },
+  {
+    "period": 2015,
+    "region": "Noord-Holland",
+    "totals": 2761929
+  },
+  {
+    "period": 2016,
+    "region": "Noord-Holland",
+    "totals": 2784854
+  },
+  {
+    "period": 2017,
+    "region": "Noord-Holland",
+    "totals": 2809483
+  },
+  {
+    "period": 2018,
+    "region": "Noord-Holland",
+    "totals": 2831182
+  },
+  {
+    "period": 2019,
+    "region": "Noord-Holland",
+    "totals": 2853359
+  },
+  {
+    "period": 2020,
+    "region": "Noord-Holland",
+    "totals": 2879527
+  },
+  {
+    "period": 2021,
+    "region": "Noord-Holland",
+    "totals": 2888486
+  },
+  {
+    "period": 2022,
+    "region": "Noord-Holland",
+    "totals": 2909827
+  },
+  {
+    "period": 2023,
+    "region": "Noord-Holland",
+    "totals": 2952622
+  },
+  {
+    "period": 1995,
+    "region": "Zuid-Holland",
+    "totals": 3325064
+  },
+  {
+    "period": 1996,
+    "region": "Zuid-Holland",
+    "totals": 3332860
+  },
+  {
+    "period": 1997,
+    "region": "Zuid-Holland",
+    "totals": 3344695
+  },
+  {
+    "period": 1998,
+    "region": "Zuid-Holland",
+    "totals": 3359047
+  },
+  {
+    "period": 1999,
+    "region": "Zuid-Holland",
+    "totals": 3378770
+  },
+  {
+    "period": 2000,
+    "region": "Zuid-Holland",
+    "totals": 3397744
+  },
+  {
+    "period": 2001,
+    "region": "Zuid-Holland",
+    "totals": 3420700
+  },
+  {
+    "period": 2002,
+    "region": "Zuid-Holland",
+    "totals": 3423780
+  },
+  {
+    "period": 2003,
+    "region": "Zuid-Holland",
+    "totals": 3439982
+  },
+  {
+    "period": 2004,
+    "region": "Zuid-Holland",
+    "totals": 3451942
+  },
+  {
+    "period": 2005,
+    "region": "Zuid-Holland",
+    "totals": 3458381
+  },
+  {
+    "period": 2006,
+    "region": "Zuid-Holland",
+    "totals": 3458875
+  },
+  {
+    "period": 2007,
+    "region": "Zuid-Holland",
+    "totals": 3455097
+  },
+  {
+    "period": 2008,
+    "region": "Zuid-Holland",
+    "totals": 3461435
+  },
+  {
+    "period": 2009,
+    "region": "Zuid-Holland",
+    "totals": 3481558
+  },
+  {
+    "period": 2010,
+    "region": "Zuid-Holland",
+    "totals": 3505611
+  },
+  {
+    "period": 2011,
+    "region": "Zuid-Holland",
+    "totals": 3528324
+  },
+  {
+    "period": 2012,
+    "region": "Zuid-Holland",
+    "totals": 3552407
+  },
+  {
+    "period": 2013,
+    "region": "Zuid-Holland",
+    "totals": 3563935
+  },
+  {
+    "period": 2014,
+    "region": "Zuid-Holland",
+    "totals": 3577032
+  },
+  {
+    "period": 2015,
+    "region": "Zuid-Holland",
+    "totals": 3600011
+  },
+  {
+    "period": 2016,
+    "region": "Zuid-Holland",
+    "totals": 3622303
+  },
+  {
+    "period": 2017,
+    "region": "Zuid-Holland",
+    "totals": 3650222
+  },
+  {
+    "period": 2018,
+    "region": "Zuid-Holland",
+    "totals": 3681044
+  },
+  {
+    "period": 2019,
+    "region": "Zuid-Holland",
+    "totals": 3673893
+  },
+  {
+    "period": 2020,
+    "region": "Zuid-Holland",
+    "totals": 3708696
+  },
+  {
+    "period": 2021,
+    "region": "Zuid-Holland",
+    "totals": 3726050
+  },
+  {
+    "period": 2022,
+    "region": "Zuid-Holland",
+    "totals": 3753944
+  },
+  {
+    "period": 2023,
+    "region": "Zuid-Holland",
+    "totals": 3804906
+  },
+  {
+    "period": 1995,
+    "region": "Zeeland",
+    "totals": 365846
+  },
+  {
+    "period": 1996,
+    "region": "Zeeland",
+    "totals": 367354
+  },
+  {
+    "period": 1997,
+    "region": "Zeeland",
+    "totals": 368426
+  },
+  {
+    "period": 1998,
+    "region": "Zeeland",
+    "totals": 369949
+  },
+  {
+    "period": 1999,
+    "region": "Zeeland",
+    "totals": 370571
+  },
+  {
+    "period": 2000,
+    "region": "Zeeland",
+    "totals": 371866
+  },
+  {
+    "period": 2001,
+    "region": "Zeeland",
+    "totals": 374920
+  },
+  {
+    "period": 2002,
+    "region": "Zeeland",
+    "totals": 377235
+  },
+  {
+    "period": 2003,
+    "region": "Zeeland",
+    "totals": 378348
+  },
+  {
+    "period": 2004,
+    "region": "Zeeland",
+    "totals": 379028
+  },
+  {
+    "period": 2005,
+    "region": "Zeeland",
+    "totals": 379978
+  },
+  {
+    "period": 2006,
+    "region": "Zeeland",
+    "totals": 380186
+  },
+  {
+    "period": 2007,
+    "region": "Zeeland",
+    "totals": 380497
+  },
+  {
+    "period": 2008,
+    "region": "Zeeland",
+    "totals": 380585
+  },
+  {
+    "period": 2009,
+    "region": "Zeeland",
+    "totals": 380984
+  },
+  {
+    "period": 2010,
+    "region": "Zeeland",
+    "totals": 381409
+  },
+  {
+    "period": 2011,
+    "region": "Zeeland",
+    "totals": 381530
+  },
+  {
+    "period": 2012,
+    "region": "Zeeland",
+    "totals": 381407
+  },
+  {
+    "period": 2013,
+    "region": "Zeeland",
+    "totals": 381077
+  },
+  {
+    "period": 2014,
+    "region": "Zeeland",
+    "totals": 380621
+  },
+  {
+    "period": 2015,
+    "region": "Zeeland",
+    "totals": 380726
+  },
+  {
+    "period": 2016,
+    "region": "Zeeland",
+    "totals": 381252
+  },
+  {
+    "period": 2017,
+    "region": "Zeeland",
+    "totals": 381568
+  },
+  {
+    "period": 2018,
+    "region": "Zeeland",
+    "totals": 382304
+  },
+  {
+    "period": 2019,
+    "region": "Zeeland",
+    "totals": 383032
+  },
+  {
+    "period": 2020,
+    "region": "Zeeland",
+    "totals": 383488
+  },
+  {
+    "period": 2021,
+    "region": "Zeeland",
+    "totals": 385400
+  },
+  {
+    "period": 2022,
+    "region": "Zeeland",
+    "totals": 386767
+  },
+  {
+    "period": 2023,
+    "region": "Zeeland",
+    "totals": 391124
+  },
+  {
+    "period": 1995,
+    "region": "Noord-Brabant",
+    "totals": 2276207
+  },
+  {
+    "period": 1996,
+    "region": "Noord-Brabant",
+    "totals": 2290424
+  },
+  {
+    "period": 1997,
+    "region": "Noord-Brabant",
+    "totals": 2304094
+  },
+  {
+    "period": 1998,
+    "region": "Noord-Brabant",
+    "totals": 2319262
+  },
+  {
+    "period": 1999,
+    "region": "Noord-Brabant",
+    "totals": 2337709
+  },
+  {
+    "period": 2000,
+    "region": "Noord-Brabant",
+    "totals": 2356004
+  },
+  {
+    "period": 2001,
+    "region": "Noord-Brabant",
+    "totals": 2375116
+  },
+  {
+    "period": 2002,
+    "region": "Noord-Brabant",
+    "totals": 2391123
+  },
+  {
+    "period": 2003,
+    "region": "Noord-Brabant",
+    "totals": 2400198
+  },
+  {
+    "period": 2004,
+    "region": "Noord-Brabant",
+    "totals": 2406994
+  },
+  {
+    "period": 2005,
+    "region": "Noord-Brabant",
+    "totals": 2411359
+  },
+  {
+    "period": 2006,
+    "region": "Noord-Brabant",
+    "totals": 2415946
+  },
+  {
+    "period": 2007,
+    "region": "Noord-Brabant",
+    "totals": 2419042
+  },
+  {
+    "period": 2008,
+    "region": "Noord-Brabant",
+    "totals": 2424827
+  },
+  {
+    "period": 2009,
+    "region": "Noord-Brabant",
+    "totals": 2434560
+  },
+  {
+    "period": 2010,
+    "region": "Noord-Brabant",
+    "totals": 2444158
+  },
+  {
+    "period": 2011,
+    "region": "Noord-Brabant",
+    "totals": 2454215
+  },
+  {
+    "period": 2012,
+    "region": "Noord-Brabant",
+    "totals": 2463686
+  },
+  {
+    "period": 2013,
+    "region": "Noord-Brabant",
+    "totals": 2471011
+  },
+  {
+    "period": 2014,
+    "region": "Noord-Brabant",
+    "totals": 2479274
+  },
+  {
+    "period": 2015,
+    "region": "Noord-Brabant",
+    "totals": 2488751
+  },
+  {
+    "period": 2016,
+    "region": "Noord-Brabant",
+    "totals": 2498749
+  },
+  {
+    "period": 2017,
+    "region": "Noord-Brabant",
+    "totals": 2512531
+  },
+  {
+    "period": 2018,
+    "region": "Noord-Brabant",
+    "totals": 2528286
+  },
+  {
+    "period": 2019,
+    "region": "Noord-Brabant",
+    "totals": 2544806
+  },
+  {
+    "period": 2020,
+    "region": "Noord-Brabant",
+    "totals": 2562955
+  },
+  {
+    "period": 2021,
+    "region": "Noord-Brabant",
+    "totals": 2573949
+  },
+  {
+    "period": 2022,
+    "region": "Noord-Brabant",
+    "totals": 2592874
+  },
+  {
+    "period": 2023,
+    "region": "Noord-Brabant",
+    "totals": 2626210
+  },
+  {
+    "period": 1995,
+    "region": "Limburg",
+    "totals": 1130050
+  },
+  {
+    "period": 1996,
+    "region": "Limburg",
+    "totals": 1133669
+  },
+  {
+    "period": 1997,
+    "region": "Limburg",
+    "totals": 1136199
+  },
+  {
+    "period": 1998,
+    "region": "Limburg",
+    "totals": 1137935
+  },
+  {
+    "period": 1999,
+    "region": "Limburg",
+    "totals": 1139302
+  },
+  {
+    "period": 2000,
+    "region": "Limburg",
+    "totals": 1141192
+  },
+  {
+    "period": 2001,
+    "region": "Limburg",
+    "totals": 1142679
+  },
+  {
+    "period": 2002,
+    "region": "Limburg",
+    "totals": 1143296
+  },
+  {
+    "period": 2003,
+    "region": "Limburg",
+    "totals": 1141889
+  },
+  {
+    "period": 2004,
+    "region": "Limburg",
+    "totals": 1139335
+  },
+  {
+    "period": 2005,
+    "region": "Limburg",
+    "totals": 1136695
+  },
+  {
+    "period": 2006,
+    "region": "Limburg",
+    "totals": 1131938
+  },
+  {
+    "period": 2007,
+    "region": "Limburg",
+    "totals": 1127805
+  },
+  {
+    "period": 2008,
+    "region": "Limburg",
+    "totals": 1123705
+  },
+  {
+    "period": 2009,
+    "region": "Limburg",
+    "totals": 1122604
+  },
+  {
+    "period": 2010,
+    "region": "Limburg",
+    "totals": 1122701
+  },
+  {
+    "period": 2011,
+    "region": "Limburg",
+    "totals": 1122627
+  },
+  {
+    "period": 2012,
+    "region": "Limburg",
+    "totals": 1123075
+  },
+  {
+    "period": 2013,
+    "region": "Limburg",
+    "totals": 1121891
+  },
+  {
+    "period": 2014,
+    "region": "Limburg",
+    "totals": 1120006
+  },
+  {
+    "period": 2015,
+    "region": "Limburg",
+    "totals": 1117941
+  },
+  {
+    "period": 2016,
+    "region": "Limburg",
+    "totals": 1116260
+  },
+  {
+    "period": 2017,
+    "region": "Limburg",
+    "totals": 1117546
+  },
+  {
+    "period": 2018,
+    "region": "Limburg",
+    "totals": 1117198
+  },
+  {
+    "period": 2019,
+    "region": "Limburg",
+    "totals": 1116137
+  },
+  {
+    "period": 2020,
+    "region": "Limburg",
+    "totals": 1117201
+  },
+  {
+    "period": 2021,
+    "region": "Limburg",
+    "totals": 1115872
+  },
+  {
+    "period": 2022,
+    "region": "Limburg",
+    "totals": 1118302
+  },
+  {
+    "period": 2023,
+    "region": "Limburg",
+    "totals": 1128367
+  }
+]

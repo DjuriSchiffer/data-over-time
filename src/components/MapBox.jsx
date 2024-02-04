@@ -2,6 +2,7 @@ import { useRef, useEffect, useState } from "react";
 import { useState as useGlobalState } from "../hooks/useReducer";
 import styled from "styled-components";
 import mapboxgl from "mapbox-gl";
+import { calculateDateFromRatio } from "../utils/time";
 
 mapboxgl.accessToken = import.meta.env.VITE_MAP_BOX_API;
 
@@ -15,25 +16,28 @@ const StyledMap = styled.div`
 `;
 
 const MapBox = () => {
-  const { time } = useGlobalState();
+  const { time, appData, timelineSettings } = useGlobalState();
+  const { year } = calculateDateFromRatio(timelineSettings, time);
+
   const mapContainer = useRef(null);
   const map = useRef(null);
   const [isMapInitialized, setMapInitialized] = useState(false);
   const [layersInitialized, setLayersInitialized] = useState(false);
 
-  // Coordinates of the top 10 biggest cities in the Netherlands
-  const cities = [
-    [4.9041, 52.3676], // Amsterdam
-    [4.4792, 51.9225], // Rotterdam
-    [4.3007, 52.0705], // The Hague
-    [5.1214, 52.0907], // Utrecht
-    [5.4697, 51.4416], // Eindhoven
-    [5.0913, 51.5555], // Tilburg
-    [6.5665, 53.2194], // Groningen
-    [5.2647, 52.3508], // Almere
-    [4.7683, 51.5719], // Breda
-    [5.8372, 51.8126], // Nijmegen
-  ];
+  const provincesCenters = {
+    Groningen: [6.8007, 53.2],
+    Fryslân: [5.8, 53.1],
+    Drenthe: [6.6, 52.9],
+    Overijssel: [6.4, 52.5],
+    Flevoland: [5.5, 52.5],
+    Gelderland: [5.9, 52.0],
+    Utrecht: [5.2, 52.1],
+    "Noord-Holland": [4.9, 52.6],
+    "Zuid-Holland": [4.6, 52.0],
+    Zeeland: [3.8, 51.3],
+    "Noord-Brabant": [5.0, 51.5],
+    Limburg: [5.9, 51.2],
+  };
 
   // Initialize the map
   useEffect(() => {
@@ -41,7 +45,7 @@ const MapBox = () => {
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
       style: "mapbox://styles/djuri-schiffer/clibphjw500z301pge2ndcre2",
-      center: [5.2913, 52.1326], // Centered roughly in the middle of the Netherlands
+      center: [5.2913, 52.1326],
       zoom: 7,
     });
 
@@ -54,15 +58,16 @@ const MapBox = () => {
   useEffect(() => {
     if (!map.current || !isMapInitialized) return;
 
-    cities.forEach((coords, index) => {
-      console.log(coords);
+    Object.entries(provincesCenters).forEach((coords, index) => {
+      const sourceId = `circleSource${index}`;
+
       map.current.addSource(`circleSource${index}`, {
         type: "geojson",
         data: {
           type: "Feature",
           geometry: {
             type: "Point",
-            coordinates: coords,
+            coordinates: coords[1],
           },
         },
       });
@@ -77,28 +82,69 @@ const MapBox = () => {
           "circle-opacity": 0.5,
         },
       });
+
+      map.current.addLayer({
+        id: `text${index}`,
+        type: "symbol",
+        source: sourceId,
+        layout: {
+          "text-field": "{totals}",
+          "text-size": 12,
+          "text-variable-anchor": ["top", "bottom", "left", "right"],
+          "text-radial-offset": 0,
+          "text-justify": "auto",
+        },
+        paint: {
+          "text-color": "#ffffff",
+        },
+      });
     });
 
     setLayersInitialized(true);
   }, [isMapInitialized]);
 
-  // Update layer properties
   useEffect(() => {
-    if (!map.current || !layersInitialized) return;
+    if (!map.current || !layersInitialized || !appData) return;
 
-    cities.forEach((_, index) => {
-      const circleThreshold = index * 0.1; // Starts at 0% for the first circle
-      const newRadius = time >= circleThreshold ? (index + 1) * 5 : 0;
+    const maxPopulation = Math.max(...appData.map((data) => data.totals));
+    const maxRadius = 50;
 
-      if (map.current.getLayer(`circle${index}`)) {
-        map.current.setPaintProperty(
-          `circle${index}`,
-          "circle-radius",
-          newRadius
+    appData.forEach((data) => {
+      if (data.period === year) {
+        const provinceIndex = Object.keys(provincesCenters).indexOf(
+          data.region
         );
+        if (provinceIndex !== -1) {
+          const populationPercentage = (data.totals / maxPopulation) * 100;
+          const radius = populationPercentage * (maxRadius / 50);
+
+          if (map.current.getLayer(`circle${provinceIndex}`)) {
+            map.current.setPaintProperty(
+              `circle${provinceIndex}`,
+              "circle-radius",
+              radius
+            );
+          }
+
+          // Update the source data to include the totals, so the text field can use it
+          const sourceId = `circleSource${provinceIndex}`;
+          const source = map.current.getSource(sourceId);
+          if (source) {
+            source.setData({
+              type: "Feature",
+              properties: {
+                totals: data.totals, // Make sure this property is updated with current totals
+              },
+              geometry: {
+                type: "Point",
+                coordinates: provincesCenters[data.region],
+              },
+            });
+          }
+        }
       }
     });
-  }, [time, layersInitialized]);
+  }, [year, layersInitialized, appData]);
 
   return <StyledMap ref={mapContainer} />;
 };
