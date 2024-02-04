@@ -3,7 +3,7 @@ import data from "./data/dummydata.json";
 
 const timelineSettings = {
   start: new Date("1995-01-01T00:00:00Z").getTime(),
-  end: Date.now(),
+  end: new Date("2023-01-01T00:00:00Z").getTime(),
 };
 
 export const initialStore = {
@@ -11,7 +11,7 @@ export const initialStore = {
   playing: "pause", // enum: pause play resume
   timelineSettings: timelineSettings,
   timelineSpeed: "REAL_TIME",
-  granularity: "week",
+  granularity: "year",
   appData: data.reduce((acc, data) => {
     const { period, region, totals } = data;
 
